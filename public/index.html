@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090d20">
+<title>MM GAME STORE | Game Top Up</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090d20;color:#f5f4ff;font-family:Arial,sans-serif}
+header{background:#111832;border-bottom:1px solid #35335e;padding:15px}
+nav,.wrap{max-width:1050px;margin:auto}
+nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-size:20px;font-weight:900;color:#c9b5ff}
+.brand span{color:#fff}
+.tag{font-size:11px;color:#a9a4c8}
+.hero{padding:35px 18px 25px;text-align:center;background:radial-gradient(ellipse at top,#30236b,#090d20 70%)}
+.hero h1{font-size:30px;margin:8px 0;color:#fff}
+.hero p{color:#c5c1dc;line-height:1.7}
+.pill{display:inline-block;border:1px solid #6650a7;border-radius:30px;padding:7px 13px;color:#d7c7ff;font-size:12px}
+.wrap{padding:18px}
+.section-title{font-size:19px;margin:20px 0 12px}
+.sub{color:#aaa6c5;font-size:13px;font-weight:normal}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
+.game{background:#151d38;border:1px solid #33365c;border-radius:14px;padding:10px;text-align:center;cursor:pointer;color:white;transition:.2s}
+.game.active{border:2px solid #a78bfa;background:#27204b;box-shadow:0 0 18px #7048df55}
+.game img{width:76px;height:76px;object-fit:cover;border-radius:15px;background:#25294b}
+.game b{display:block;font-size:12px;margin-top:9px;line-height:1.4}
+.card{background:#151d38;border:1px solid #35365e;border-radius:16px;padding:18px;margin:15px 0}
+label{display:block;color:#d8d3ed;font-size:13px;margin:13px 0 6px}
+input,select{width:100%;padding:13px;background:#0b1228;border:1px solid #48466f;color:white;border-radius:9px;font-size:14px}
+input[type=file]{font-size:12px}
+button{border:0;border-radius:10px;padding:14px;background:linear-gradient(100deg,#7048df,#9b65ed);color:white;font-weight:bold;font-size:15px;width:100%;cursor:pointer;margin-top:14px}
+button:disabled{opacity:.5}
+.note{font-size:12px;color:#aaa6c5;line-height:1.7}
+.payment{display:flex;gap:10px}
+.payment label{flex:1;background:#0b1228;border:1px solid #48466f;border-radius:9px;padding:12px;display:flex;align-items:center;gap:8px}
+.payment input{width:auto}
+#message{padding:12px;border-radius:9px;margin-top:12px;display:none;line-height:1.6}
+footer{text-align:center;padding:25px;color:#918da9;font-size:12px}
+@media(max-width:480px){.hero h1{font-size:24px}.games{grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+<div><div class="brand">MM <span>GAME STORE</span></div><div class="tag">YOUR GAME TOP-UP PARTNER</div></div>
+<div class="pill">Myanmar 🇲🇲</div>
+</nav>
+</header>
+<section class="hero">
+<div class="pill">FAST • EASY • CONVENIENT</div>
+<h1>GAME TOP-UP CENTER</h1>
+<p>ဂိမ်းငွေဖြည့်ရန် အလွယ်ကူဆုံးနေရာ<br>Choose your game and top up easily.</p>
+</section>
+<main class="wrap">
+<h2 class="section-title">ဂိမ်းရွေးချယ်ပါ <span class="sub">/ Select Your Game</span></h2>
+<div class="games" id="games"><p>ဂိမ်းများ ရယူနေသည်... Loading games...</p></div>
+
+<section class="card">
+<h2 class="section-title">အော်ဒါတင်ရန် <span class="sub">/ Place Your Order</span></h2>
+<form id="orderForm">
+<label>Game / ဂိမ်း</label>
+<select id="gameSelect" required><option value="">ဂိမ်းရွေးပါ / Select game</option></select>
+
+<label>Package / ငွေဖြည့်ပမာဏ</label>
+<select id="packageSelect" name="packageId" required><option value="">Package ရွေးပါ</option></select>
+
+<label>Player ID / ကစားသမား ID</label>
+<input name="playerId" placeholder="Enter your Player ID" required>
+
+<label>Phone Number / ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
+<input name="contact" type="tel" placeholder="09xxxxxxxxx" required>
+
+<label>Payment Method / ငွေပေးချေမှု</label>
+<div class="payment">
+<label><input type="radio" name="payment" value="KBZPay" required> KBZPay</label>
+<label><input type="radio" name="payment" value="WavePay" required> WavePay</label>
+</div>
+
+<label>Payment Screenshot / ငွေလွှဲ Screenshot</label>
+<input name="proof" type="file" accept="image/jpeg,image/png,image/webp" required>
+<p class="note">JPG, PNG, WEBP — Maximum 5MB. ငွေလွှဲအထောက်အထား ပုံတင်ပေးပါ။</p>
+
+<button id="submitBtn" type="submit">အော်ဒါတင်မည် / SUBMIT ORDER</button>
+<div id="message"></div>
+</form>
+</section>
+
+<section class="card">
+<h3>အကူအညီလိုပါသလား။ / Need Help?</h3>
+<p class="note">အော်ဒါတင်ပြီးနောက် Admin မှ စစ်ဆေးအတည်ပြုပေးပါမည်။ ငွေလွှဲအထောက်အထား မှန်ကန်စွာတင်ပေးပါ။</p>
+</section>
+</main>
+<footer>© 2026 MM GAME STORE. All Rights Reserved.</footer>
+
+<script>
+const icons=[
+"https://play-lh.googleusercontent.com/Bi6Ci1rk-szbr2-zaiy1ERCwgf6ndaNX81btfma8JurIMAg-_E5erEHGT2E5U6pyRCGSaV0091Kdt6tOboL9t9Y=w240-h240",
+"https://play-lh.googleusercontent.com/Se7jR6A5R0Mk9ClaIguf46yi2K3k32JsqKb3gAtrktIh3JwnFfxrQRmG9GLvdMpbxbMrReUOxzDkStxGxNo-5Q=w240-h240",
+"https://play-lh.googleusercontent.com/zBZFC5bBo8gb9FvOzYuX-DkbYq6Pvu6wE1ZRg-LfAPGNF-8rved7az02rHsStrU_dq-zsmkq6iIyIJzh3iciSg=w240-h240",
+"https://play-lh.googleusercontent.com/hEm5NVeEv7UfFJaK8GZdfWe7p3DB_VvYx57qIEHbR0tMV_NToziH0Vbgd6CxLiWF-iURpAe-jsC_UGUDt0diPQ=w240-h240",
+"https://play-lh.googleusercontent.com/JeXWmt6zPqeb8KtLnULXWpYG9l6syolkbks5N2T4RX2D5vAqSnrnVG0nY4aN0ZqpgJezfruup_naTlXU3osuow=w240-h240",
+"https://play-lh.googleusercontent.com/YQqyKaXX-63krqsfIzUEJWUWLINxcb5tbS6QVySdxbS7eZV7YB2dUjUvX27xA0TIGtfxQ5v-tQjwlT5tTB-O=w240-h240",
+"https://play-lh.googleusercontent.com/hnnIRd5AAf7T2gWzwki00aA9aWMX9JUbr8N42WjGqSVEq36Ey5_T0GCvyekeBkn_rSknR3vXvF4zTkZh4j-KRw=w240-h240"
+];
+let games=[],packages=[],selectedGame='';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function loadCatalog(){
+try{
+const r=await fetch('/api/catalog');
+if(!r.ok)throw Error('Catalog မရရှိပါ');
+const data=await r.json();games=data.games;packages=data.packages;
+$('games').innerHTML=games.map((g,i)=>`<div class="game" data-id="${g.id}"><img src="${icons[i]||''}" alt="" onerror="this.style.display='none'"><b>${esc(g.name)}</b></div>`).join('');
+$('gameSelect').innerHTML='<option value="">ဂိမ်းရွေးပါ / Select game</option>'+games.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('');
+$('games').querySelectorAll('.game').forEach(el=>el.onclick=()=>chooseGame(el.dataset.id));
+$('gameSelect').onchange=()=>chooseGame($('gameSelect').value);
+}catch(e){$('games').innerHTML='<p>ဂိမ်းများ ရယူမရပါ။ Server ကို စစ်ဆေးပါ။</p>'}
+}
+function chooseGame(id){
+selectedGame=String(id);$('gameSelect').value=selectedGame;
+$('games').querySelectorAll('.game').forEach(el=>el.classList.toggle('active',el.dataset.id===selectedGame));
+const list=packages.filter(p=>String(p.game_id)===selectedGame);
+$('packageSelect').innerHTML='<option value="">Package ရွေးပါ / Select package</option>'+list.map(p=>`<option value="${p.id}">${esc(p.title)} — ${Number(p.price).toLocaleString()} MMK</option>`).join('');
+}
+$('orderForm').onsubmit=async e=>{
+e.preventDefault();
+const btn=$('submitBtn'),msg=$('message'),fd=new FormData(e.target);
+fd.append('gameId',selectedGame);
+if(!selectedGame){msg.style.display='block';msg.textContent='ဂိမ်းရွေးချယ်ပေးပါ။';return}
+btn.disabled=true;btn.textContent='တင်နေသည်... / SUBMITTING';
+msg.style.display='none';
+try{
+const r=await fetch('/api/orders',{method:'POST',body:fd});
+const d=await r.json();
+if(!r.ok)throw Error(d.error||'အော်ဒါတင်မရပါ');
+msg.style.display='block';msg.style.background='#173d32';msg.style.color='#aaffd8';
+msg.textContent='အော်ဒါတင်ပြီးပါပြီ။ Order Number: #'+d.orderId+' — Thank you!';
+e.target.reset();selectedGame='';$('games').querySelectorAll('.game').forEach(el=>el.classList.remove('active'));
+$('packageSelect').innerHTML='<option value="">Package ရွေးပါ</option>';
+}catch(err){
+msg.style.display='block';msg.style.background='#4b202e';msg.style.color='#ffd5df';msg.textContent=err.message;
+}finally{btn.disabled=false;btn.textContent='အော်ဒါတင်မည် / SUBMIT ORDER'}
+};
+loadCatalog();
+</script>
+</body>
+</html>
