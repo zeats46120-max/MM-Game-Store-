@@ -5,17 +5,147 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MM GAME STORE Admin</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#090d20;color:#fff;font-family:Arial,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:#f4f9ff;color:#23384d;font-family:Arial,sans-serif}
 main{max-width:650px;margin:25px auto;padding:14px}
-.card{background:#151d38;border:1px solid #454071;border-radius:14px;padding:18px;margin:14px 0}
-h2{color:#c5adff}h3{color:#d8ccff}
+.card{background:#ffffff;border:1px solid #d5e7f8;border-radius:14px;padding:18px;margin:14px 0}
+h2{color:#397fbd}h3{color:#5b91c2}
 input,select,button{width:100%;padding:12px;margin:6px 0;border-radius:8px}
-input,select{background:#0c1430;color:white;border:1px solid #555}
-button{background:#7048df;color:white;border:0;font-weight:bold}
-button.secondary{background:#394665}button.danger{background:#a83b55}
-.item{border-top:1px solid #454071;padding:12px 0}
-a{color:#c5adff}small{color:#b9bfd5}#msg{color:#ffaaaa}
+input,select{background:#f5faff;color:#23384d;border:1px solid #c5d9ea}
+button{background:#5b9bd5;color:#23384d;border:0;font-weight:bold}
+button.secondary{background:#79a9d1}button.danger{background:#d66b7b}
+.item{border-top:1px solid #d5e7f8;padding:12px 0}
+a{color:#397fbd}small{color:#6c849b}#msg{color:#c34b61}
 .hidden{display:none}.row{display:flex;gap:8px}.row button{width:auto;flex:1}
+
+/* MM GAME STORE - Clean Professional Admin UI */
+:root{
+ --primary:#2878c7;
+ --ink:#20364d;
+ --muted:#71869b;
+ --line:#e0eaf3;
+}
+body{background:#f4f8fc;color:var(--ink);font-family:Arial,sans-serif}
+main{max-width:1050px;margin:28px auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:21px;margin:17px 0;box-shadow:0 6px 22px #2449680a}
+h2{color:#1d568b}
+h3{color:#326fA8}
+input,select{background:#f8fbfe;color:var(--ink);border:1px solid #d6e2ed;min-height:44px}
+input:focus,select:focus{outline:3px solid #2878c71c;border-color:#6aa5dc}
+button{background:linear-gradient(110deg,#2878c7,#4a9add);color:#fff;border:0;font-weight:700;cursor:pointer;transition:filter .2s}
+button:hover{filter:brightness(1.06)}
+button.secondary{background:#eaf3fc;color:#245b8e;border:1px solid #d4e5f5}
+button.danger{background:#c94f62;color:#fff}
+.item{border-top:1px solid var(--line);padding:14px 2px}
+a{color:var(--primary)}
+small{color:var(--muted)}
+#msg{color:#c34b61}
+#loginBox{max-width:460px;margin:9vh auto}
+#panel>.card:first-child{background:linear-gradient(120deg,#fff,#f2f8ff)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row button{min-width:100px}
+@media(max-width:600px){
+ main{margin:12px auto;padding:10px}
+ .card{padding:16px;border-radius:14px}
+ #loginBox{margin:5vh auto}
+}
+
+
+/* MM GAME STORE - Admin Dashboard Summary Cards */
+.stats-grid{
+ display:grid;
+ grid-template-columns:repeat(4,minmax(0,1fr));
+ gap:12px;
+ margin:16px 0;
+}
+.stat-card{
+ min-width:0;
+ padding:16px 13px;
+ border:1px solid #dce9f5;
+ border-radius:13px;
+ background:linear-gradient(145deg,#fff,#f5faff);
+}
+.stat-card span{display:block;color:#647d96;font-size:13px;font-weight:700}
+.stat-card h2{font-size:clamp(17px,2.5vw,24px);margin:10px 0 5px;overflow-wrap:anywhere}
+.stat-card small{font-size:11px}
+.stat-card.completed{border-left:4px solid #15945b}
+.stat-card.pending{border-left:4px solid #d99000}
+.stat-card.approved{border-left:4px solid #2878c7}
+.stat-card.rejected{border-left:4px solid #d34b5b}
+@media(max-width:650px){
+ .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+ .stat-card{padding:13px 10px}
+}
+
+
+/* MM GAME STORE - Admin Website Layout */
+.admin-shell{display:flex;min-height:100vh;background:#f4f8fc}
+.admin-sidebar{width:245px;flex-shrink:0;background:#fff;border-right:1px solid #e0eaf3;padding:24px 15px;display:flex;flex-direction:column;gap:8px}
+.admin-brand{font-size:18px;font-weight:900;color:#175b9e;padding:8px 10px 25px;letter-spacing:.2px}
+.admin-brand span{background:linear-gradient(120deg,#2878c7,#83b9e8);color:white;padding:7px;border-radius:9px;margin-right:5px}
+.admin-brand small{display:block;font-size:9px;color:#71869b;letter-spacing:1.5px;margin-top:12px}
+.sidebar-label{font-size:10px;font-weight:bold;color:#91a4b6;letter-spacing:1.5px;padding:8px 12px}
+.nav-item{width:100%;text-align:left;background:transparent;color:#526d86;border-radius:10px;padding:13px 14px;margin:2px 0;font-size:14px;font-weight:700}
+.nav-item:hover,.nav-item.active{background:linear-gradient(100deg,#e7f3ff,#f2f8ff);color:#2169aa}
+.nav-item.active{box-shadow:inset 3px 0 #2878c7}
+.sidebar-footer{margin-top:auto;padding:18px 10px 5px;border-top:1px solid #e8eff6;color:#397fbd;font-size:12px;font-weight:bold;line-height:1.8}
+.sidebar-footer small{font-weight:normal}
+.admin-main{flex:1;min-width:0;padding:25px clamp(14px,3vw,35px);max-width:1500px;margin:0 auto;width:100%}
+.admin-topbar{display:flex;justify-content:space-between;align-items:center;gap:15px;background:#fff;border:1px solid #e0eaf3;border-radius:16px;padding:17px 21px;margin-bottom:22px;box-shadow:0 5px 20px #193d5b08}
+.admin-topbar h2{font-size:21px;margin:5px 0;color:#203f5e}
+.admin-topbar small,.page-heading small{font-size:10px;letter-spacing:1.4px;font-weight:bold;color:#7e98af}
+.top-actions{display:flex;gap:8px}
+.top-actions button{width:auto;margin:0;padding:10px 15px}
+.admin-main .card{border-radius:17px;padding:22px;margin:0 0 20px;box-shadow:0 5px 22px #193d5b08}
+.admin-page{display:block}
+.admin-page.hidden{display:none}
+.page-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.page-heading h2{font-size:23px;margin:7px 0;color:#244968}
+.page-heading p{font-size:13px;color:#71869b;margin:5px 0}
+#gameSection form,#packageSection form{background:#f5f9fd;border:1px solid #e0eaf3;border-radius:13px;padding:14px;margin:15px 0}
+#gameSection #games{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px;margin-top:20px}
+#gameSection .game-admin-card{background:#fff;border:1px solid #dce8f3;border-radius:16px;padding:17px;box-shadow:0 5px 18px #193d5b0a;min-width:0}
+#gameSection .game-admin-icon{width:58px;height:58px;border-radius:15px;background:#eaf4ff;display:grid;place-items:center;font-size:30px;margin-bottom:12px}
+#gameSection .game-admin-card h4{margin:5px 0 8px;color:#244968;font-size:16px;overflow-wrap:anywhere}
+#gameSection .game-admin-card .game-admin-status{font-size:12px;color:#71869b;margin:0 0 12px}
+#gameSection .game-admin-card button{width:100%;margin:5px 0}
+#packageSection .item{background:#fbfdff;border-radius:12px;padding:15px;margin:10px 0;border:1px solid #e2edf6}
+#packageSection .item .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+#packageSection .item .row button{flex:1;min-width:110px}
+#dashboardPage .stats-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+#dashboardPage .stat-card{border-radius:14px}
+#ordersPage .item,#customersPage .item,#walletPage .item{background:#fbfdff;border:1px solid #e2edf6;border-radius:12px;padding:16px;margin:11px 0}
+#ordersPage select{max-width:240px}
+#salesChart{background:linear-gradient(180deg,#f7fbff,#fff);border-radius:12px;margin-top:15px}
+@media(max-width:800px){
+ .admin-shell{display:block}
+ .admin-sidebar{width:100%;padding:12px;position:static;border-right:0;border-bottom:1px solid #e0eaf3}
+ .admin-brand{padding:7px 8px 12px}
+ .admin-brand small{display:inline-block;margin-left:8px}
+ .sidebar-label,.sidebar-footer{display:none}
+ .admin-sidebar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+ .admin-brand{grid-column:1/-1}
+ .nav-item{font-size:12px;padding:11px 7px;text-align:center}
+ .admin-main{padding:14px 10px}
+ .admin-topbar{padding:14px;align-items:flex-start}
+ .admin-topbar h2{font-size:17px}
+ .top-actions button{padding:9px;font-size:12px}
+ #dashboardPage .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:390px){
+ .admin-sidebar{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .admin-topbar{flex-direction:column}
+ .top-actions{width:100%}
+ .top-actions button{flex:1}
+ .admin-main .card{padding:15px}
+}
+
+
+.status-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 20px}
+.status-tab{flex:1;min-width:95px;border:1px solid #d9e6f1;background:#f5f9fd;color:#49647d;border-radius:10px;padding:12px 10px;font-weight:700}
+.status-tab b{display:inline-block;margin-left:5px;background:#e5edf5;border-radius:20px;padding:2px 7px;font-size:11px}
+.status-tab.active{background:#e5f1ff;border-color:#80b8ef;color:#1769b0}
+.empty-status{padding:22px;text-align:center;color:#7b8da0;background:#f8fbfe;border-radius:12px}
+
 </style>
 </head>
 <body>
@@ -29,12 +159,27 @@ a{color:#c5adff}small{color:#b9bfd5}#msg{color:#ffaaaa}
 </form><p id="msg"></p>
 </section>
 <div id="panel" class="hidden">
-<div class="card">
-<h2>Admin Dashboard</h2>
-<button class="secondary" onclick="loadAll()">Refresh</button>
-<button class="danger" onclick="logout()">Logout</button>
-</div>
-<section class="card">
+<div class="admin-shell">
+<aside class="admin-sidebar">
+ <div class="admin-brand"><span>MM</span> GAME STORE<small>ADMIN CONTROL PANEL</small></div>
+ <div class="sidebar-label">MAIN MENU</div>
+ <button class="nav-item active" onclick="showAdminPage('dashboard',this)">▦ Dashboard</button>
+ <button class="nav-item" onclick="showAdminPage('games',this)">🎮 Games</button>
+ <button class="nav-item" onclick="showAdminPage('wallet',this)">💰 Wallet</button>
+ <button class="nav-item" onclick="showAdminPage('customers',this)">👥 Customers</button>
+ <button class="nav-item" onclick="showAdminPage('orders',this)">📦 Orders</button>
+ <button class="nav-item" onclick="showAdminPage('reports',this)">📊 Sales Reports</button>
+ <div class="sidebar-footer">MM GAME STORE<br><small>Admin Panel</small></div>
+</aside>
+<div class="admin-main">
+<header class="admin-topbar">
+ <div><small>WELCOME BACK</small><h2>Admin Control Panel</h2></div>
+ <div class="top-actions">
+  <button class="secondary refresh-btn" onclick="loadAll()">↻ Refresh</button>
+  <button class="danger logout-btn" onclick="logout()">Logout</button>
+ </div>
+</header>
+<section class="card admin-page hidden" id="gameSection">
 <h3>Game အသစ်ထည့်ရန်</h3>
 <form id="gameForm">
 <input name="name" placeholder="Game အမည်" required>
@@ -42,56 +187,348 @@ a{color:#c5adff}small{color:#b9bfd5}#msg{color:#ffaaaa}
 </form>
 <div id="games"></div>
 </section>
-<section class="card">
-<h3>Package အသစ်ထည့်ရန်</h3>
+<section class="card admin-page hidden" id="packageSection">
+<button type="button" class="secondary" onclick="backToAdminGames()">← Game စာရင်းသို့ပြန်သွားမည်</button>
+<h3 id="adminGameTitle">Package Management</h3>
 <form id="packageForm">
-<select name="gameId" id="gameSelect" required></select>
+<select name="gameId" id="gameSelect" required style="display:none"></select>
 <input name="title" placeholder="ဥပမာ - 86 Diamonds" required>
 <input name="price" type="number" min="1" placeholder="ဈေးနှုန်း (MMK)" required>
 <button>Package ထည့်မည်</button>
 </form>
 <div id="packages"></div>
 </section>
-<section class="card">
-<h3>Customer Orders</h3>
+<section class="card admin-page active" id="dashboardPage">
+ <div class="page-heading"><div><small>OVERVIEW</small><h2>Dashboard Overview</h2><p>MM GAME STORE ရဲ့ လုပ်ငန်းအခြေအနေ</p></div></div>
+ <div id="salesSummary">Loading sales report...</div>
+</section>
+
+<section class="card admin-page hidden" id="reportsPage">
+ <div class="page-heading"><div><small>BUSINESS ANALYTICS</small><h2>Sales Reports</h2><p>နေ့စဉ်ရောင်းအားနှင့် ဝင်ငွေစာရင်း</p></div></div>
+ <h3>Daily Sales (Last 7 Days)</h3>
+ <div id="dailySales"></div>
+ <div id="salesChart" style="display:flex;align-items:flex-end;gap:10px;height:190px;padding:15px 5px;border-bottom:1px solid #c5d9ea"></div>
+</section>
+
+<section class="card admin-page hidden" id="walletPage">
+ <div class="page-heading"><div><small>PAYMENT CENTER</small><h2>Wallet Management</h2><p>Customer ငွေဖြည့်တောင်းဆိုမှုများ</p></div></div>
+ <p><small>ငွေလွှဲ Screenshot စစ်ဆေးပြီး အခြေအနေအလိုက် စစ်ဆေးနိုင်ပါသည်။</small></p>
+ <div class="status-tabs" id="walletTabs">
+  <button class="status-tab active" onclick="filterWallet('Pending',this)">Pending <b id="walletPendingCount">0</b></button>
+  <button class="status-tab" onclick="filterWallet('Completed',this)">Completed <b id="walletCompletedCount">0</b></button>
+  <button class="status-tab" onclick="filterWallet('Rejected',this)">Rejected <b id="walletRejectedCount">0</b></button>
+ </div>
+ <div id="walletDeposits">Loading wallet deposits...</div>
+</section>
+
+<section class="card admin-page hidden" id="customersPage">
+ <div class="page-heading"><div><small>USER MANAGEMENT</small><h2>Customers</h2><p>Customer စာရင်းနှင့် ဝယ်ယူမှုမှတ်တမ်း</p></div></div>
+ <div id="customers">Loading customers...</div>
+</section>
+<section class="card admin-page hidden" id="ordersPage">
+<div class="page-heading"><div><small>ORDER MANAGEMENT</small><h2>Customer Orders</h2><p>Order များကို အခြေအနေအလိုက် သီးခြားစစ်ဆေးရန်</p></div></div>
+<div class="status-tabs" id="orderTabs">
+ <button class="status-tab active" onclick="filterOrders('Pending',this)">Pending <b id="orderPendingCount">0</b></button>
+ <button class="status-tab" onclick="filterOrders('Completed',this)">Completed <b id="orderCompletedCount">0</b></button>
+ <button class="status-tab" onclick="filterOrders('Rejected',this)">Rejected <b id="orderRejectedCount">0</b></button>
+</div>
 <div id="orders">Loading...</div>
 </section>
-</div>
+</div></div></div>
 </main>
 <script>
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-async function api(url,options={}){
-const r=await fetch(url,{...options,headers:{'Content-Type':'application/json',...(options.headers||{})}});
-let d={};try{d=await r.json()}catch{}
-if(!r.ok)throw Error(d.error||'လုပ်ဆောင်မှု မအောင်မြင်ပါ');
-return d;
+let csrfToken='';
+async function ensureCsrfToken(){
+ if(!csrfToken){
+  const r=await fetch('/api/csrf-token');
+  const d=await r.json();
+  if(!r.ok)throw Error(d.error||'Security token မရပါ');
+  csrfToken=d.csrfToken;
+ }
+ return csrfToken;
 }
+async function api(url,options={}){
+ const method=(options.method||'GET').toUpperCase();
+ const headers={'Content-Type':'application/json',...(options.headers||{})};
+ if(!['GET','HEAD','OPTIONS'].includes(method)){
+  await ensureCsrfToken();
+  headers['x-csrf-token']=csrfToken;
+ }
+ const r=await fetch(url,{...options,headers});
+ let d={};try{d=await r.json()}catch{}
+ if(!r.ok)throw Error(d.error||'လုပ်ဆောင်မှု မအောင်မြင်ပါ');
+ if(d.csrfToken)csrfToken=d.csrfToken;
+ return d;
+}
+
+async function loadSalesReport(){
+  const box=document.getElementById('salesSummary');
+  const daily=document.getElementById('dailySales');
+  try{
+    const r=await api('/api/admin/reports/sales');
+    const x=r.summary;
+    box.innerHTML=`
+      <div class="stats-grid">
+        <div class="stat-card"><span>စုစုပေါင်းဝင်ငွေ</span><h2>${Number(x.total_revenue).toLocaleString()} MMK</h2></div>
+        <div class="stat-card"><span>ဒီနေ့ရောင်းအား</span><h2>${Number(x.today_revenue).toLocaleString()} MMK</h2></div>
+        <div class="stat-card"><span>ဒီလရောင်းအား</span><h2>${Number(x.month_revenue).toLocaleString()} MMK</h2></div>
+        <div class="stat-card"><span>စုစုပေါင်း Orders</span><h2>${x.total_orders}</h2></div>
+        <div class="stat-card completed"><span>Completed</span><h2>${x.completed_orders}</h2><small>ပြီးဆုံးသော Order</small></div>
+        <div class="stat-card pending"><span>Pending</span><h2>${x.pending_orders}</h2><small>စောင့်ဆိုင်းနေသော Order</small></div>
+        <div class="stat-card approved"><span>Approved</span><h2>${x.approved_orders}</h2><small>အတည်ပြုပြီး</small></div>
+        <div class="stat-card rejected"><span>Rejected</span><h2>${x.rejected_orders}</h2><small>ပယ်ချထားသော Order</small></div>
+      </div>
+      <small>ဝင်ငွေကို Completed Orders များမှသာ တွက်ထားပါသည်။</small>`;
+    daily.innerHTML=r.daily.length?r.daily.map(d=>`
+      <p>${new Date(d.day).toLocaleDateString()} — ${Number(d.revenue).toLocaleString()} MMK</p>
+    `).join(''):'<p>Order မရှိသေးပါ။</p>';
+
+    const chart=document.getElementById('salesChart');
+    const rows=r.daily||[];
+    const max=Math.max(1,...rows.map(d=>Number(d.revenue)));
+    chart.innerHTML=rows.map(d=>{
+      const amount=Number(d.revenue);
+      const height=Math.max(4,amount/max*130);
+      return `<div style="flex:1;text-align:center;min-width:0">
+        <div title="${amount.toLocaleString()} MMK" style="height:${height}px;background:#5b9bd5;border-radius:6px 6px 0 0;width:100%"></div>
+        <small style="font-size:10px">${new Date(d.day).toLocaleDateString('en-GB',{day:'2-digit',month:'2-digit'})}</small>
+      </div>`;
+    }).join('');
+  }catch(e){
+    box.textContent='Sales Report ဖတ်မရပါ။ Admin Login ဝင်ထားကြောင်း စစ်ပါ။';
+    daily.textContent='';
+  }
+}
+
+async function loadCustomers(){
+try{
+const a=await api('/api/admin/customers');
+$('customers').innerHTML=a.length?a.map(c=>`<div class="item">
+<b>${esc(c.username)}</b><br>
+<small>${esc(c.email)}</small>
+<p>Orders: ${Number(c.order_count)} ခု</p>
+<p>Completed ဝယ်ယူငွေ: ${Number(c.completed_total).toLocaleString()} MMK</p>
+<button class="secondary" onclick="viewCustomerOrders(${c.id},'${esc(c.username).replace(/'/g,"&#39;")}')">Order History ကြည့်ရန်</button>
+</div>`).join(''):'<p>Customer မရှိသေးပါ။</p>';
+}catch(e){$('customers').textContent=e.message}
+}
+async function viewCustomerOrders(id,username){
+try{
+const a=await api('/api/admin/customers/'+id+'/orders');
+alert(username+' ၏ Order History\\n'+(a.length?a.map(o=>'#'+o.id+' | '+o.game_name+' | '+o.package_name+' | '+Number(o.price).toLocaleString()+' MMK | '+o.status).join('\\n'):'Order မရှိသေးပါ။'));
+}catch(e){alert(e.message)}
+}
+
+let allWalletDeposits=[];
+let walletFilter='Pending';
+
+function filterWallet(status,button){
+ walletFilter=status;
+ document.querySelectorAll('#walletTabs .status-tab').forEach(x=>x.classList.remove('active'));
+ if(button)button.classList.add('active');
+ renderWalletDeposits();
+}
+
+function renderWalletDeposits(){
+ const counts={Pending:0,Completed:0,Rejected:0};
+ allWalletDeposits.forEach(d=>{
+  const st=d.status==='Approved'?'Completed':d.status;
+  if(counts[st]!==undefined)counts[st]++;
+ });
+ $('walletPendingCount').textContent=counts.Pending;
+ $('walletCompletedCount').textContent=counts.Completed;
+ $('walletRejectedCount').textContent=counts.Rejected;
+
+ const list=allWalletDeposits.filter(d=>(d.status==='Approved'?'Completed':d.status)===walletFilter);
+ if(!list.length){
+  $('walletDeposits').innerHTML='<p class="empty-status">ဒီအမျိုးအစားမှာ မှတ်တမ်းမရှိသေးပါ။</p>';
+  return;
+ }
+ const colors={Pending:'#d99000',Completed:'#15945b',Rejected:'#d34b5b'};
+ $('walletDeposits').innerHTML=list.map(d=>{
+  const id=Number(d.id);
+  const status=d.status==='Approved'?'Completed':d.status;
+  return `<div class="item">
+   <b>Deposit #${id}</b>
+   <p>Customer: ${esc(d.username)} (${esc(d.email)})</p>
+   <p>ပမာဏ: <b>${Number(d.amount).toLocaleString()} MMK</b></p>
+   <p>Payment: ${esc(d.payment_method)}</p>
+   <p>Status: <strong style="color:${colors[status]||'#64748b'}">${status}</strong></p>
+   <p><small>${new Date(d.created_at).toLocaleString()}</small></p>
+   <p><a href="/api/wallet/deposits/${id}/proof" target="_blank" rel="noopener">ငွေလွှဲ Screenshot ကြည့်ရန်</a></p>
+   ${status==='Pending'?`
+    <button onclick="reviewWalletDeposit(${id},'Completed')">Completed / ငွေဖြည့်အောင်မြင်</button>
+    <button class="danger" onclick="reviewWalletDeposit(${id},'Rejected')">Rejected / ပယ်ချမည်</button>
+   `:''}
+  </div>`;
+ }).join('');
+}
+
+async function loadWalletDeposits(){
+ try{
+  allWalletDeposits=await api('/api/admin/wallet/deposits');
+  renderWalletDeposits();
+ }catch(e){
+  $('walletDeposits').textContent=e.message;
+ }
+}
+
+async function reviewWalletDeposit(id,status){
+ const action=status==='Completed'?'Wallet ထဲ ငွေထည့်ရန်':'ပယ်ချရန်';
+ if(!confirm('Deposit #'+id+' ကို '+action+' သေချာပါသလား?'))return;
+ try{
+  await api('/api/admin/wallet/deposits/'+id,{
+   method:'PATCH',
+   body:JSON.stringify({status})
+  });
+  alert('Deposit #'+id+' ကို '+status+' လုပ်ပြီးပါပြီ။');
+  await loadWalletDeposits();
+ }catch(e){
+  alert(e.message);
+  await loadWalletDeposits();
+ }
+}
+
+let allAdminOrders=[];
+let orderFilter='Pending';
+
+function filterOrders(status,button){
+ orderFilter=status;
+ document.querySelectorAll('#orderTabs .status-tab').forEach(x=>x.classList.remove('active'));
+ if(button)button.classList.add('active');
+ renderAdminOrders();
+}
+
+function renderAdminOrders(){
+ const normalized=allAdminOrders.map(x=>({...x,status:x.status==='Approved'?'Completed':x.status}));
+ const counts={Pending:0,Completed:0,Rejected:0};
+ normalized.forEach(x=>{if(counts[x.status]!==undefined)counts[x.status]++});
+ $('orderPendingCount').textContent=counts.Pending;
+ $('orderCompletedCount').textContent=counts.Completed;
+ $('orderRejectedCount').textContent=counts.Rejected;
+
+ const list=normalized.filter(x=>x.status===orderFilter);
+ $('orders').innerHTML=list.length?list.map(x=>`
+  <div class="item">
+   <b>Order #${x.id}</b>
+   <p>${esc(x.game_name)} — ${esc(x.package_name)}</p>
+   <p>Player ID: ${esc(x.player_id)}</p>
+   <p>${esc(x.contact)} | ${esc(x.payment)}</p>
+   <p><b>${Number(x.price).toLocaleString()} MMK</b></p>
+   <p>Status: <strong>${esc(x.status)}</strong></p>
+   ${x.proof_file?`<p><a href="/api/orders/${x.id}/proof" target="_blank">ငွေလွှဲ Screenshot ကြည့်ရန်</a></p>`:'<small>Screenshot မတင်ထားပါ</small>'}
+   ${x.status==='Pending'?`
+    <select onchange="updateStatus(${x.id},this.value)">
+     <option value="Pending" selected>Pending</option>
+     <option value="Completed">Completed</option>
+     <option value="Rejected">Rejected</option>
+    </select>
+   `:''}
+  </div>`).join(''):'<p class="empty-status">ဒီအမျိုးအစားမှာ Order မရှိသေးပါ။</p>';
+}
+
+function showAdminPage(name,button,fromPop=false){
+ if(!fromPop){
+  const state={mmAdmin:true,page:name,gameId:null};
+  if(history.state?.mmAdmin)history.pushState(state,'','#admin-'+name);
+  else history.replaceState(state,'','#admin-'+name);
+ }
+ const pages={
+  dashboard:'dashboardPage',
+  games:'gameSection',
+  wallet:'walletPage',
+  customers:'customersPage',
+  orders:'ordersPage',
+  reports:'reportsPage'
+ };
+ document.querySelectorAll('.admin-page').forEach(el=>el.classList.add('hidden'));
+ const target=$(pages[name]);
+ if(target)target.classList.remove('hidden');
+ document.querySelectorAll('.nav-item').forEach(el=>el.classList.remove('active'));
+ if(button)button.classList.add('active');
+ else{
+  const nav=[...document.querySelectorAll('.nav-item')];
+  const index={dashboard:0,games:1,wallet:2,customers:3,orders:4,reports:5}[name];
+  if(nav[index])nav[index].classList.add('active');
+ }
+}
+let adminGames=[];
+let adminPackages=[];
+let selectedAdminGameId=null;
+
+function openAdminGame(id,fromPop=false){
+ const game=adminGames.find(g=>Number(g.id)===Number(id));
+ if(!game)return;
+ if(!fromPop)history.pushState({mmAdmin:true,page:'games',gameId:Number(id)},'','#admin-game-'+id);
+ selectedAdminGameId=Number(id);
+ $('adminGameTitle').textContent=game.name+' — Package Management';
+ $('gameSelect').value=String(id);
+ document.querySelectorAll('.admin-page').forEach(section=>section.classList.add('hidden'));
+ $('packageSection').classList.remove('hidden');
+ renderAdminPackages();
+ $('packageSection').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function backToAdminGames(){
+ if(history.state?.mmAdmin)history.back();
+ else{selectedAdminGameId=null;showAdminPage('games');}
+}
+
+function renderAdminPackages(){
+ const list=adminPackages.filter(p=>Number(p.game_id)===Number(selectedAdminGameId));
+ $('packages').innerHTML=list.length ? list.map(p=>`<div class="item"><b>${esc(p.title)}</b> — ${Number(p.price).toLocaleString()} MMK<br><small>Package ID: ${p.id} | ${p.active?'ဖွင့်ထားသည်':'ပိတ်ထားသည်'}</small><div class="row"><button onclick="editPackage(${p.id},'${esc(p.title).replace(/'/g,"&#39;")}',${p.price})">အမည်/ဈေးပြင်</button><button class="secondary" onclick="togglePackage(${p.id},${!p.active})">${p.active?'ပိတ်မည်':'ပြန်ဖွင့်မည်'}</button></div></div>`).join('') : '<p>ဒီ Game အတွက် Package မရှိသေးပါ။ အပေါ်က Form မှာ အသစ်ထည့်နိုင်ပါတယ်။';
+}
+
+function renderAdminGames(){
+ $('games').innerHTML=adminGames.map(g=>`<div class="game-admin-card" data-game-id="${g.id}"><div class="game-admin-icon">🎮</div><h4>${esc(g.name)}</h4><p class="game-admin-status">${g.active?'● ဖွင့်ထားသည်':'○ ပိတ်ထားသည်'}</p><button type="button" onclick="openAdminGame(${g.id})">Package စီမံရန် →</button><button type="button" class="secondary" onclick="toggleGame(${g.id},${!g.active})">${g.active?'Game ပိတ်မည်':'Game ပြန်ဖွင့်မည်'}</button></div>`).join('')||'Game မရှိပါ';
+}
+
 async function loadAll(){
 try{
-const [c,o]=await Promise.all([api('/api/admin/catalog'),api('/api/admin/orders')]);
-$('games').innerHTML=c.games.map(g=>`<div class="item"><b>${esc(g.name)}</b> <small>#${g.id}</small><p>${g.active?'ဖွင့်ထားသည်':'ပိတ်ထားသည်'}</p><button class="secondary" onclick="toggleGame(${g.id},${!g.active})">${g.active?'ပိတ်မည်':'ပြန်ဖွင့်မည်'}</button></div>`).join('')||'Game မရှိပါ';
+const [c,o]=await Promise.all([api('/api/admin/catalog'),api('/api/admin/orders')]);adminGames=c.games;adminPackages=c.packages;await loadCustomers();await loadSalesReport();await loadWalletDeposits();
+renderAdminGames();
 $('gameSelect').innerHTML=c.games.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('');
-$('packages').innerHTML=c.packages.map(p=>`<div class="item"><b>${esc(p.title)}</b> — ${Number(p.price).toLocaleString()} MMK<br><small>Game ID: ${p.game_id} | Package ID: ${p.id} | ${p.active?'ဖွင့်ထားသည်':'ပိတ်ထားသည်'}</small><div class="row"><button onclick="editPackage(${p.id},'${esc(p.title).replace(/'/g,"&#39;")}',${p.price})">အမည်/ဈေးပြင်</button><button class="secondary" onclick="togglePackage(${p.id},${!p.active})">${p.active?'ပိတ်မည်':'ပြန်ဖွင့်မည်'}</button></div></div>`).join('')||'Package မရှိပါ';
-$('orders').innerHTML=o.length?o.map(x=>`<div class="item"><b>Order #${x.id}</b><p>${esc(x.game_name)} — ${esc(x.package_name)}</p><p>Player ID: ${esc(x.player_id)}</p><p>${esc(x.contact)} | ${esc(x.payment)}</p><p>${Number(x.price).toLocaleString()} MMK | ${esc(x.status)}</p>${x.proof_file?`<p><a href="/uploads/${encodeURIComponent(x.proof_file)}" target="_blank">ငွေလွှဲ Screenshot ကြည့်ရန်</a></p>`:'<small>Screenshot မတင်ထားပါ</small>'}<select onchange="updateStatus(${x.id},this.value)"><option ${x.status==='Pending'?'selected':''}>Pending</option><option ${x.status==='Approved'?'selected':''}>Approved</option><option ${x.status==='Rejected'?'selected':''}>Rejected</option><option ${x.status==='Completed'?'selected':''}>Completed</option></select></div>`).join(''):'<p>အော်ဒါမရှိသေးပါ။</p>';
+renderAdminPackages();
+allAdminOrders=o;renderAdminOrders();
 }catch(e){$('msg').textContent=e.message}
 }
-async function toggleGame(id,active){try{await api('/api/admin/games/'+id,{method:'PATCH',body:JSON.stringify({active})});await loadAll()}catch(e){alert(e.message)}}
+async function toggleGame(id,active){
+ try{
+  await api('/api/admin/games/'+id,{method:'PATCH',body:JSON.stringify({active})});
+  const game=adminGames.find(g=>Number(g.id)===Number(id));
+  if(game){game.active=active?1:0;renderAdminGames();}
+ }catch(e){alert(e.message)}
+}
 async function togglePackage(id,active){try{await api('/api/admin/packages/'+id,{method:'PATCH',body:JSON.stringify({active})});await loadAll()}catch(e){alert(e.message)}}
 async function editPackage(id,title,price){
 const t=prompt('Package အမည်',title);if(t===null)return;
 const p=prompt('ဈေးနှုန်း (MMK)',price);if(p===null)return;
 try{await api('/api/admin/packages/'+id+'/details',{method:'PATCH',body:JSON.stringify({title:t,price:p})});alert('ဈေးနှုန်း ပြင်ပြီးပါပြီ');await loadAll()}catch(e){alert(e.message)}
 }
-async function updateStatus(id,status){try{await api('/api/admin/orders/'+id,{method:'PATCH',body:JSON.stringify({status})});await loadAll()}catch(e){alert(e.message)}}
+async function updateStatus(id,status){
+ if(!['Completed','Rejected'].includes(status))return;
+ if(!confirm('Order #'+id+' ကို '+status+' လုပ်မှာ သေချာပါသလား?')){await loadAll();return}
+ try{
+  await api('/api/admin/orders/'+id,{method:'PATCH',body:JSON.stringify({status})});
+  await loadAll();
+ }catch(e){alert(e.message);await loadAll()}
+}
 $('login').onsubmit=async e=>{
 e.preventDefault();$('msg').textContent='စစ်ဆေးနေသည်...';
-try{await api('/api/admin/login',{method:'POST',body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');$('msg').textContent='';await loadAll()}catch(err){$('msg').textContent=err.message}
+try{await api('/api/admin/login',{method:'POST',body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');showAdminPage('dashboard');$('msg').textContent='';await loadAll()}catch(err){$('msg').textContent=err.message}
 };
 $('gameForm').onsubmit=async e=>{e.preventDefault();try{await api('/api/admin/games',{method:'POST',body:JSON.stringify({name:new FormData(e.target).get('name')})});e.target.reset();alert('Game ထည့်ပြီးပါပြီ');await loadAll()}catch(err){alert(err.message)}};
-$('packageForm').onsubmit=async e=>{e.preventDefault();try{await api('/api/admin/packages',{method:'POST',body:JSON.stringify(Object.fromEntries(new FormData(e.target)))});e.target.reset();alert('Package ထည့်ပြီးပါပြီ');await loadAll()}catch(err){alert(err.message)}};
+$('packageForm').onsubmit=async e=>{e.preventDefault();if(!selectedAdminGameId){alert('Game တစ်ခုကို အရင်ရွေးပါ။');return}try{const data=Object.fromEntries(new FormData(e.target));data.gameId=String(selectedAdminGameId);await api('/api/admin/packages',{method:'POST',body:JSON.stringify(data)});e.target.reset();alert('Package ထည့်ပြီးပါပြီ');await loadAll()}catch(err){alert(err.message)}};
 async function logout(){try{await api('/api/admin/logout',{method:'POST'});location.reload()}catch(e){alert(e.message)}}
-api('/api/admin/me').then(d=>{if(d.loggedIn){$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');loadAll()}});
+window.addEventListener('popstate',e=>{
+ const state=e.state;
+ if(!state?.mmAdmin)return;
+ if(state.gameId)openAdminGame(state.gameId,true);
+ else{selectedAdminGameId=null;showAdminPage(state.page||'dashboard',null,true);}
+});
+api('/api/admin/me').then(d=>{if(d.loggedIn){$('loginBox').classList.add('hidden');$('panel').classList.remove('hidden');showAdminPage('dashboard');loadAll()}});
 </script>
 </body>
 </html>

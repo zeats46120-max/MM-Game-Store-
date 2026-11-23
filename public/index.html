@@ -3,42 +3,685 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#090d20">
+<meta name="theme-color" content="#f4f9ff">
 <title>MM GAME STORE | Game Top Up</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;background:#090d20;color:#f5f4ff;font-family:Arial,sans-serif}
-header{background:#111832;border-bottom:1px solid #35335e;padding:15px}
+body{margin:0;background:#f4f9ff;color:#23384d;font-family:Arial,sans-serif}
+header{background:#eaf4ff;border-bottom:1px solid #d5e7f8;padding:15px}
 nav,.wrap{max-width:1050px;margin:auto}
 nav{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.brand{font-size:20px;font-weight:900;color:#c9b5ff}
+.brand{font-size:20px;font-weight:900;color:#397fbd}
 .brand span{color:#fff}
-.tag{font-size:11px;color:#a9a4c8}
-.hero{padding:35px 18px 25px;text-align:center;background:radial-gradient(ellipse at top,#30236b,#090d20 70%)}
+.tag{font-size:11px;color:#6d879f}
+.hero{padding:35px 18px 25px;text-align:center;background:radial-gradient(ellipse at top,#d8ecff,#f4f9ff 70%)}
 .hero h1{font-size:30px;margin:8px 0;color:#fff}
-.hero p{color:#c5c1dc;line-height:1.7}
-.pill{display:inline-block;border:1px solid #6650a7;border-radius:30px;padding:7px 13px;color:#d7c7ff;font-size:12px}
+.hero p{color:#5d7892;line-height:1.7}
+.pill{display:inline-block;border:1px solid #a9cdea;border-radius:30px;padding:7px 13px;color:#397fbd;font-size:12px}
 .wrap{padding:18px}
 .section-title{font-size:19px;margin:20px 0 12px}
-.sub{color:#aaa6c5;font-size:13px;font-weight:normal}
+.sub{color:#6c849b;font-size:13px;font-weight:normal}
 .games{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px}
-.game{background:#151d38;border:1px solid #33365c;border-radius:14px;padding:10px;text-align:center;cursor:pointer;color:white;transition:.2s}
-.game.active{border:2px solid #a78bfa;background:#27204b;box-shadow:0 0 18px #7048df55}
-.game img{width:76px;height:76px;object-fit:cover;border-radius:15px;background:#25294b}
+.game{background:#ffffff;border:1px solid #d7e7f5;border-radius:14px;padding:10px;text-align:center;cursor:pointer;color:white;transition:.2s}
+.game.active{border:2px solid #79b9ed;background:#e7f3ff;box-shadow:0 0 18px #5b9bd555}
+.game img{width:76px;height:76px;object-fit:cover;border-radius:15px;background:#e4f0fa}
 .game b{display:block;font-size:12px;margin-top:9px;line-height:1.4}
-.card{background:#151d38;border:1px solid #35365e;border-radius:16px;padding:18px;margin:15px 0}
-label{display:block;color:#d8d3ed;font-size:13px;margin:13px 0 6px}
-input,select{width:100%;padding:13px;background:#0b1228;border:1px solid #48466f;color:white;border-radius:9px;font-size:14px}
+.card{background:#ffffff;border:1px solid #d7e7f5;border-radius:16px;padding:18px;margin:15px 0}
+label{display:block;color:#38536c;font-size:13px;margin:13px 0 6px}
+input,select{width:100%;padding:13px;background:#f5faff;border:1px solid #c5d9ea;color:#23384d;border-radius:9px;font-size:14px}input:focus,select:focus{outline:2px solid #83b9e8;border-color:#5b9bd5}
 input[type=file]{font-size:12px}
-button{border:0;border-radius:10px;padding:14px;background:linear-gradient(100deg,#7048df,#9b65ed);color:white;font-weight:bold;font-size:15px;width:100%;cursor:pointer;margin-top:14px}
+button{border:0;border-radius:10px;padding:14px;background:linear-gradient(100deg,#5b9bd5,#83b9e8);color:white;font-weight:bold;font-size:15px;width:100%;cursor:pointer;margin-top:14px}
 button:disabled{opacity:.5}
-.note{font-size:12px;color:#aaa6c5;line-height:1.7}
+#accountSection{border:1px solid #cfe3f6;background:linear-gradient(145deg,#fff,#f5faff);box-shadow:0 8px 24px #397fbd12}
+#accountSection .section-title{color:#397fbd}
+#accountGuest{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#accountGuest>button{margin-top:8px}
+#loginForm,#registerForm{grid-column:1/-1;background:#f5faff;border:1px solid #d7e7f5;border-radius:13px;padding:15px;margin-top:10px}
+#loginForm button,#registerForm button{background:linear-gradient(100deg,#397fbd,#83b9e8);box-shadow:0 5px 12px #397fbd25}
+#showLogin,#showRegister{background:#e7f3ff;color:#397fbd;border:1px solid #c5dff5}
+#showLogin:focus,#showRegister:focus{outline:2px solid #83b9e8}
+#accountMessage{line-height:1.6}
+@media(max-width:380px){#accountGuest{grid-template-columns:1fr}}
+.profile-panel{display:flex;align-items:center;gap:14px;padding:17px;background:linear-gradient(120deg,#e5f2ff,#f5faff);border:1px solid #cfe3f6;border-radius:14px;margin:15px 0}
+.profile-avatar{width:55px;height:55px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:#d2eaff;font-size:27px}
+.profile-panel small{font-size:10px;letter-spacing:1px;color:#6c849b;font-weight:bold}
+#accountWelcome{font-size:18px;font-weight:bold;color:#286da9;margin:5px 0}
+.profile-active{font-size:11px;color:#15945b}
+.account-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0}
+.account-stats>div{padding:15px;background:#f5faff;border:1px solid #d7e7f5;border-radius:12px;text-align:center}
+.account-stats strong,.account-stats small{display:block}
+.account-stats strong{font-size:24px;color:#397fbd}
+.account-stats small{font-size:11px;color:#6c849b;margin-top:5px}
+.orders-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}
+.orders-heading h3{font-size:15px;color:#38536c}
+#refreshOrders{width:auto;margin:0;padding:9px 13px;font-size:12px}
+.order-card{background:#fff;border:1px solid #d7e7f5;border-radius:12px;padding:14px;margin:10px 0;color:#38536c;line-height:1.8}
+.order-card .order-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.order-card .order-id{font-weight:bold;color:#397fbd}
+.order-card .order-status{font-size:11px;font-weight:bold;padding:4px 9px;border-radius:20px;background:#f0f6fc}
+.order-card .order-price{font-size:17px;font-weight:bold;color:#286da9}
+.order-card small{color:#7890a6}
+.logout-button{background:#fff;color:#d34b5b;border:1px solid #f0cbd1}
+#orderNotification{padding:13px 15px;margin:12px 0;border:1px solid #a9d6f5;border-radius:12px;background:#eaf5ff;color:#286da9;font-size:13px;line-height:1.7}
+#orderNotification strong{display:block;margin-bottom:3px}
+
+@media(max-width:380px){.orders-heading h3{font-size:13px}}
+
+.note{font-size:12px;color:#6c849b;line-height:1.7}
 .payment{display:flex;gap:10px}
-.payment label{flex:1;background:#0b1228;border:1px solid #48466f;border-radius:9px;padding:12px;display:flex;align-items:center;gap:8px}
+.payment label{flex:1;background:#f5faff;border:1px solid #c5d9ea;border-radius:9px;padding:12px;display:flex;align-items:center;gap:8px}
 .payment input{width:auto}
 #message{padding:12px;border-radius:9px;margin-top:12px;display:none;line-height:1.6}
-footer{text-align:center;padding:25px;color:#918da9;font-size:12px}
+footer{text-align:center;padding:25px;color:#7890a6;font-size:12px}
 @media(max-width:480px){.hero h1{font-size:24px}.games{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* MM GAME STORE - Clean Professional Customer UI */
+:root{
+ --primary:#2878c7;
+ --primary-dark:#175b9e;
+ --ink:#20364d;
+ --muted:#71869b;
+ --line:#e0eaf3;
+ --surface:#ffffff;
+ --soft:#f3f8fd;
+}
+body{background:#f5f8fc;color:var(--ink);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 3px 15px #193d5b0a}
+nav,.wrap{max-width:1100px}
+nav{min-height:65px}
+.brand{font-size:21px;color:var(--primary-dark);letter-spacing:.2px}
+.brand span{color:var(--ink)}
+.tag{letter-spacing:1.2px;font-size:10px}
+.hero{padding:52px 18px 42px;background:linear-gradient(135deg,#e7f3ff,#f8fbff 65%,#eaf5ff)}
+.hero h1{color:#183f65;font-size:clamp(27px,5vw,38px);letter-spacing:.5px}
+.hero p{color:#607b94;font-size:14px}
+.pill{background:#fff;border-color:#d6e7f6;color:var(--primary);font-weight:700}
+.wrap{padding:22px 18px}
+.section-title{color:#244968;font-size:20px;font-weight:800}
+.sub{color:var(--muted)}
+.card{border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 7px 24px #2449680a;margin:18px 0}
+.games{grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.game{color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px 10px;box-shadow:0 3px 12px #24496808;transition:transform .18s,border-color .18s,box-shadow .18s}
+.game:hover{transform:translateY(-3px);border-color:#a8cbea;box-shadow:0 8px 20px #2878c71a}
+.game.active{color:var(--primary-dark);border:2px solid var(--primary);background:#f0f7ff;box-shadow:0 5px 18px #2878c722}
+.game img{width:78px;height:78px;border-radius:17px}
+.game b{color:inherit;font-size:13px;line-height:1.5}
+label{color:#38536c;font-weight:700}
+input,select{background:#f8fbfe;border:1px solid #d6e2ed;border-radius:10px;min-height:45px}
+input:focus,select:focus{outline:3px solid #2878c71c;border-color:#6aa5dc}
+button{background:linear-gradient(110deg,#2878c7,#4a9add);box-shadow:0 4px 12px #2878c725;transition:filter .2s,transform .2s}
+button:hover{filter:brightness(1.04);transform:translateY(-1px)}
+button:disabled{transform:none}
+#accountSection{border-color:#d8e8f6;background:#fff;box-shadow:0 8px 28px #2449680c}
+#accountSection .section-title{color:var(--primary-dark)}
+#loginForm,#registerForm{background:#f8fbff;border-color:var(--line)}
+#showLogin,#showRegister{background:#edf6ff;color:var(--primary-dark);box-shadow:none}
+.profile-panel{background:linear-gradient(120deg,#eaf4ff,#f8fbff);border-color:#d9e9f7}
+.account-stats>div{background:#f8fbff;border-color:var(--line)}
+.order-card{border-color:var(--line);box-shadow:0 3px 12px #24496808}
+#orderNotification{background:#eff7ff;border-color:#c9e2f7}
+#walletSection{background:#f8fbff!important;border-color:#dce9f5!important}
+#walletSection>div:first-of-type{background:#eaf4ff!important}
+#walletSection h3{color:#244968}
+#walletSection h2{color:var(--primary-dark)!important}
+.payment label{background:#f8fbff;border-color:var(--line)}
+.note{color:var(--muted)}
+.logout-button{box-shadow:none}
+footer{background:#fff;border-top:1px solid var(--line);margin-top:25px}
+@media(max-width:480px){
+ .hero{padding:38px 15px 30px}
+ .wrap{padding:14px}
+ .card{padding:16px;border-radius:15px}
+ .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+ .game{padding:12px 7px}
+ .game img{width:68px;height:68px}
+}
+
+
+/* MM GAME STORE App Navigation */
+body{padding-bottom:82px}
+#bottomNavigation{position:fixed;bottom:0;left:0;right:0;z-index:1000;
+max-width:none;margin:0;padding:8px 5px calc(8px + env(safe-area-inset-bottom));
+display:grid;grid-template-columns:repeat(5,1fr);gap:4px;
+background:#fff;border-top:1px solid #dce8f3;box-shadow:0 -5px 20px #193d5b12}
+#bottomNavigation button{margin:0;padding:5px 2px;background:transparent;
+box-shadow:none;color:#71869b;font-size:20px;display:flex;flex-direction:column;
+align-items:center;gap:3px;min-height:48px}
+#bottomNavigation button small{font-size:10px;font-weight:700}
+#bottomNavigation button.active{color:#2878c7;background:#edf6ff;border-radius:10px}
+.app-page[hidden],.app-hidden{display:none!important}
+.home-featured{padding:8px 0 20px}
+.home-featured .games{grid-template-columns:repeat(2,minmax(0,1fr))}
+#gameCatalogSection,#gameDetailSection{margin-bottom:20px}
+#accountSection{margin-top:15px}
+@media(min-width:700px){
+ #bottomNavigation{left:50%;right:auto;transform:translateX(-50%);
+ width:min(100%,600px);border:1px solid #dce8f3;border-bottom:0;
+ border-radius:16px 16px 0 0}
+}
+
+
+/* MM GAME STORE - Game Detail Professional Design */
+#gameDetailSection{
+  background:linear-gradient(180deg,#f4faff 0%,#ffffff 240px);
+  border:1px solid #dceafa;
+  border-radius:22px;
+  padding:20px 16px;
+  box-shadow:0 12px 32px rgba(42,105,160,.10);
+  overflow:hidden;
+}
+#gameDetailSection #backToGames{
+  background:#e8f3ff;
+  color:#286da8;
+  border:1px solid #cfe4f8;
+  border-radius:12px;
+  padding:11px 15px;
+  font-weight:700;
+  box-shadow:none;
+  margin-bottom:18px;
+}
+#gameDetailSection #gameDetailTitle{
+  color:#17466b;
+  font-size:25px;
+  font-weight:800;
+  line-height:1.4;
+  padding:16px;
+  margin:0 -16px 22px;
+  background:linear-gradient(110deg,#dceeff,#f1f8ff);
+  border-bottom:1px solid #d8eafa;
+}
+#orderForm{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+#orderForm label{
+  color:#315675;
+  font-weight:700;
+  font-size:14px;
+  margin-top:8px;
+}
+#orderForm input,
+#orderForm select{
+  width:100%;
+  min-height:52px;
+  padding:13px 14px;
+  border:1.5px solid #d4e4f3;
+  border-radius:13px;
+  background:#fff;
+  color:#203b54;
+  font-size:16px;
+  outline:none;
+  box-shadow:0 3px 10px rgba(35,92,140,.04);
+}
+#orderForm input:focus,
+#orderForm select:focus{
+  border-color:#65a9e8;
+  box-shadow:0 0 0 3px rgba(75,155,225,.13);
+}
+#orderForm #serverIdField{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  padding:13px;
+  border:1px solid #d9eafa;
+  background:#f3f9ff;
+  border-radius:14px;
+}
+#orderForm #serverIdField label{margin-top:0}
+#orderForm .note{
+  border:1px solid #d5eaff;
+  border-radius:15px!important;
+  line-height:1.7;
+}
+#orderForm #submitBtn{
+  width:100%;
+  min-height:54px;
+  margin-top:12px;
+  border-radius:14px;
+  background:linear-gradient(100deg,#287fc4,#55a8e8);
+  color:#fff;
+  font-size:16px;
+  font-weight:800;
+  box-shadow:0 7px 18px rgba(40,127,196,.2);
+}
+#orderForm #submitBtn:active{transform:scale(.99)}
+#orderForm #message{
+  border-radius:12px;
+  line-height:1.6;
+}
+@media(min-width:650px){
+  #gameDetailSection{max-width:680px;margin:20px auto;padding:25px}
+  #gameDetailSection #gameDetailTitle{margin-left:-25px;margin-right:-25px}
+}
+
+
+/* MM GAME STORE - Diamond Package Cards */
+#packageSelect{display:none!important}
+#packageCards{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:12px;
+ margin:12px 0 20px;
+}
+.package-card{
+ padding:10px;
+ border:2px solid #d8e8f8;
+ border-radius:16px;
+ background:#fff;
+ color:#24435f;
+ text-align:center;
+ cursor:pointer;
+ min-width:0;
+ transition:.15s;
+ box-shadow:0 4px 12px rgba(40,105,160,.07);
+}
+.package-card:active{transform:scale(.98)}
+.package-card.selected{
+ border-color:#328bd0;
+ background:#edf7ff;
+ box-shadow:0 0 0 2px #b9dcf8;
+}
+.package-art{
+ height:112px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ flex-direction:column;
+ border-radius:11px;
+ background:linear-gradient(145deg,#e8f5ff,#c8e5ff);
+ margin-bottom:9px;
+ overflow:hidden;
+}
+.package-art .diamond-icon{
+ font-size:54px;
+ line-height:1.2;
+ filter:drop-shadow(0 5px 5px #4a91c455);
+}
+.package-card .package-name{
+ font-weight:800;
+ font-size:15px;
+ line-height:1.4;
+ min-height:42px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+.package-card .package-price{
+ color:#1675bd;
+ font-size:16px;
+ font-weight:800;
+ margin:7px 0;
+}
+.package-card .package-hint{
+ display:inline-block;
+ font-size:11px;
+ color:#52738e;
+ background:#eff6fc;
+ border:1px solid #d5e7f7;
+ border-radius:20px;
+ padding:5px 10px;
+}
+.package-card.selected .package-hint{
+ color:#fff;
+ background:#328bd0;
+ border-color:#328bd0;
+}
+
+
+/* Game-specific package artwork labels */
+.package-art .package-currency{
+ font-size:10px;
+ font-weight:800;
+ letter-spacing:.7px;
+ color:#3976a8;
+ margin-top:5px;
+}
+
+
+
+/* MM GAME STORE - Meta Recharge style package cards */
+#packageCards{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:14px!important;margin:16px 0 22px!important}
+.package-card{padding:0!important;overflow:hidden!important;border:2px solid #35445b!important;border-radius:20px!important;background:#182338!important;color:#f4f6ff!important;text-align:left!important;box-shadow:0 7px 20px #0003!important}
+.package-card.selected{border-color:#a879ff!important;background:#202d47!important;box-shadow:0 0 0 2px #a879ff55!important}
+.package-art{position:relative!important;height:190px!important;margin:0!important;padding:12px!important;display:flex!important;align-items:center!important;justify-content:center!important;overflow:hidden!important;border-radius:0!important;background:linear-gradient(155deg,#101827,#202c42)!important}
+.package-art .currency-image{display:block!important;max-width:90%!important;max-height:145px!important;object-fit:contain!important;filter:drop-shadow(0 5px 9px #0008)!important}
+.package-art-placeholder{display:flex;flex-direction:column;align-items:center;gap:8px;color:#d9c7ff;font-size:48px}
+.package-art-placeholder small{font-size:10px;letter-spacing:1px;color:#c4cce0}
+.package-overlay{position:absolute;left:0;right:0;bottom:0;padding:30px 12px 12px;background:linear-gradient(transparent,#050912f5 38%)}
+.package-card .package-name{color:#fff!important;font-size:15px!important;font-weight:800!important;line-height:1.35!important}
+.package-card .package-price{margin-top:7px!important;color:#e7d7ff!important;font-size:18px!important;font-weight:900!important}
+.package-meta{min-height:56px;padding:10px 12px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:7px}
+.package-meta .package-currency{color:#b9c5d8;font-size:10px;letter-spacing:.5px}
+.package-card .package-hint{display:inline-block;padding:5px 11px;border:1px solid #64728a;border-radius:20px;color:#e3e9f5;font-size:12px}
+@media(max-width:360px){.package-art{height:165px!important}.package-card .package-name{font-size:13px!important}.package-card .package-price{font-size:16px!important}}
+
+
+/* Official Game Icons in Package Cards */
+.package-art{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:8px;
+  overflow:hidden;
+}
+.package-art .package-game-image{
+  width:76px;
+  height:76px;
+  object-fit:cover;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(20,80,150,.16);
+}
+.package-art .package-currency{
+  font-size:11px;
+  font-weight:800;
+  text-align:center;
+}
+
+/* Currency Artwork Package Cards */
+.package-art{
+ min-height:145px;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ justify-content:center;
+ gap:8px;
+ overflow:hidden;
+}
+.package-art .currency-image{
+ object-fit:contain;
+ max-width:100%;
+ filter:drop-shadow(0 5px 8px rgba(30,80,150,.15));
+}
+.package-art .package-currency{
+ font-size:11px;
+ font-weight:800;
+ text-align:center;
+}
+
+
+#globalToast{position:fixed;left:50%;bottom:105px;transform:translate(-50%,15px);width:calc(100% - 36px);max-width:430px;padding:13px 16px;border-radius:10px;background:#333;color:#fff;font-size:14px;line-height:1.5;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,.18);z-index:999999;opacity:0;visibility:hidden;transition:opacity .2s ease,transform .2s ease,visibility .2s;pointer-events:none}
+#globalToast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
+
+
+.show-more-button{
+  display:block;
+  width:100%;
+  margin:12px 0;
+  padding:13px 16px;
+  border:1px solid #d7e7f5;
+  border-radius:12px;
+  background:#f0f7ff;
+  color:#1769aa;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .2s ease,transform .2s ease;
+}
+.show-more-button:active{transform:scale(.98)}
+.record-reveal{
+  animation:recordReveal .28s ease both;
+}
+@keyframes recordReveal{
+  from{opacity:0;transform:translateY(7px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+
+/* Meta-inspired MM GAME STORE home redesign */
+.hero{
+ position:relative;overflow:hidden;
+ padding:48px 20px 42px;
+ background:linear-gradient(120deg,#092b50 0%,#104d83 55%,#1979bd 100%);
+ color:#fff;text-align:left;
+}
+.hero:before,.hero:after{
+ content:"";position:absolute;border-radius:50%;pointer-events:none;
+}
+.hero:before{width:300px;height:300px;right:-90px;top:-130px;
+ background:rgba(110,190,255,.13)}
+.hero:after{width:220px;height:220px;right:12%;bottom:-170px;
+ border:1px solid rgba(255,255,255,.15)}
+.hero-inner{
+ max-width:1060px;margin:auto;display:flex;align-items:center;
+ justify-content:space-between;gap:20px;position:relative;z-index:1;
+}
+.hero-copy{max-width:590px}
+.hero-kicker{font-size:10px;font-weight:800;letter-spacing:2px;color:#9dd5ff}
+.hero-kicker span{display:inline-block;width:7px;height:7px;
+ background:#55d6b0;border-radius:50%;margin-right:7px}
+.hero h1{font-size:clamp(34px,6vw,54px);line-height:1.08;
+ letter-spacing:-1px;color:#fff;margin:17px 0}
+.hero h1 strong{color:#8ed1ff}
+.hero p{font-size:14px;line-height:1.9;color:#d3e9fb;max-width:460px}
+.hero .hero-cta{
+ width:auto;margin-top:17px;padding:13px 20px;border-radius:11px;
+ background:#fff;color:#14558c;box-shadow:0 7px 20px #001b3540;
+}
+.hero-cta span{margin-left:12px;font-size:18px}
+.hero-trust{display:flex;flex-wrap:wrap;gap:15px;margin-top:22px;
+ color:#d7edff;font-size:11px}
+.hero-art{position:relative;width:260px;height:230px;flex-shrink:0;
+ display:grid;place-items:center}
+.hero-orbit{position:absolute;border:1px solid #a8dfff55;border-radius:50%}
+.orbit-one{width:205px;height:205px}
+.orbit-two{width:155px;height:155px;border-style:dashed}
+.hero-controller{width:112px;height:112px;border-radius:32px;
+ display:grid;place-items:center;font-size:57px;
+ background:linear-gradient(145deg,#ffffff30,#ffffff10);
+ border:1px solid #ffffff55;box-shadow:0 15px 45px #001c3c55;
+ transform:rotate(-9deg)}
+.hero-art-label{position:absolute;right:-3px;bottom:10px;
+ padding:10px 14px;border-radius:10px;background:#fff;color:#174d79;
+ font-size:9px;line-height:1.5;letter-spacing:1px;
+ box-shadow:0 7px 20px #001c3540}
+.hero-art-label b{font-size:12px}
+.home-featured{padding-top:28px}
+.featured-heading{margin-bottom:17px}
+.featured-kicker{font-size:10px;letter-spacing:1.7px;
+ color:#2878c7;font-weight:800}
+.featured-heading .section-title{margin:5px 0;font-size:23px}
+.featured-sub{font-size:12px;color:#71869b;margin:5px 0}
+.home-featured .games{grid-template-columns:repeat(2,minmax(0,1fr))}
+.home-featured .game{min-height:145px;display:flex;flex-direction:column;
+ align-items:center;justify-content:center}
+#viewAllGames{max-width:280px;display:block;margin:22px auto 0}
+@media(min-width:700px){
+ .home-featured .games{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media(max-width:520px){
+ .hero{padding:35px 18px 30px}
+ .hero-inner{gap:0}
+ .hero-copy{width:100%}
+ .hero h1{font-size:36px}
+ .hero-art{width:105px;height:145px;margin-right:-8px}
+ .hero-orbit.orbit-one{width:115px;height:115px}
+ .hero-orbit.orbit-two{width:88px;height:88px}
+ .hero-controller{width:65px;height:65px;border-radius:20px;font-size:34px}
+ .hero-art-label{right:-3px;bottom:0;padding:6px 8px;font-size:7px}
+ .hero-art-label b{font-size:9px}
+ .hero-trust{gap:9px;font-size:9px}
+}
+
+
+/* MM GAME STORE - Premium Game Cards */
+.home-featured .game{
+  min-height:165px;
+  padding:17px 10px;
+  gap:10px;
+  border:1px solid #dceaf7;
+  border-radius:20px;
+  background:linear-gradient(155deg,#ffffff 0%,#f2f8ff 100%);
+  box-shadow:0 7px 22px rgba(35,91,145,.09);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:#193d5b;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.home-featured .game img{
+  width:88px;
+  height:88px;
+  object-fit:cover;
+  border-radius:21px;
+  background:#eaf3fc;
+  box-shadow:0 5px 14px rgba(32,91,150,.15);
+}
+.home-featured .game b{
+  margin-top:2px;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.45;
+  color:#244663;
+  text-align:center;
+}
+.home-featured .game:hover{
+  transform:translateY(-4px);
+  border-color:#8bbce8;
+  box-shadow:0 12px 26px rgba(35,112,185,.16);
+}
+.home-featured .game:active{
+  transform:scale(.97);
+}
+.home-featured .game.active{
+  border:2px solid #2878c7;
+  background:linear-gradient(145deg,#edf6ff,#ffffff);
+  box-shadow:0 7px 20px rgba(40,120,199,.18);
+}
+#games .game{
+  min-height:140px;
+  border-radius:18px;
+  padding:15px 9px;
+  background:linear-gradient(155deg,#fff,#f5f9ff);
+  box-shadow:0 5px 16px rgba(35,91,145,.07);
+}
+#games .game img{
+  width:82px;
+  height:82px;
+  border-radius:19px;
+}
+#games .game b{
+  color:#244663;
+  font-size:13px;
+  font-weight:800;
+}
+@media(max-width:520px){
+  .home-featured .games{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .home-featured .game{
+    min-height:150px;
+    padding:14px 7px;
+    border-radius:18px;
+  }
+  .home-featured .game img{
+    width:78px;
+    height:78px;
+  }
+}
+
+
+/* MM GAME STORE - Premium Dark Game Detail */
+#gameDetailSection{
+  background:linear-gradient(145deg,#101a2c 0%,#17263d 55%,#111c30 100%)!important;
+  border:1px solid #34445f!important;
+  border-radius:24px!important;
+  box-shadow:0 14px 35px rgba(8,20,40,.22)!important;
+  color:#edf3ff!important;
+}
+#gameDetailSection #backToGames{
+  background:#263650!important;
+  color:#dceaff!important;
+  border:1px solid #435775!important;
+}
+#gameDetailSection #gameDetailTitle{
+  color:#fff!important;
+  background:linear-gradient(110deg,#243957,#302b50)!important;
+  border-bottom:1px solid #43516e!important;
+  border-radius:12px!important;
+  font-size:23px!important;
+}
+#gameDetailSection #orderForm>label{
+  color:#e2ebfa!important;
+  font-weight:800!important;
+}
+#gameDetailSection #orderForm input,
+#gameDetailSection #orderForm select{
+  background:#f7faff!important;
+  color:#20344d!important;
+  border:1px solid #91a9c5!important;
+  border-radius:13px!important;
+}
+#gameDetailSection #orderForm input:focus,
+#gameDetailSection #orderForm select:focus{
+  border-color:#a879ff!important;
+  box-shadow:0 0 0 3px #a879ff33!important;
+}
+#gameDetailSection #orderForm #serverIdField{
+  background:#202f47!important;
+  border:1px solid #455a79!important;
+}
+#gameDetailSection #orderForm #serverIdField label{
+  color:#e2ebfa!important;
+}
+#gameDetailSection #orderForm .note{
+  background:#202f47!important;
+  border:1px solid #465d7e!important;
+  color:#e8efff!important;
+}
+#gameDetailSection #orderForm .note strong{
+  color:#d8c1ff!important;
+}
+#gameDetailSection #orderForm .note p{
+  color:#d4deee!important;
+  line-height:1.7;
+}
+#packageCards{
+  gap:13px!important;
+}
+.package-card{
+  border-color:#3c4d68!important;
+  border-radius:19px!important;
+  background:#18263c!important;
+  box-shadow:0 8px 20px #050b1680!important;
+}
+.package-card.selected{
+  border-color:#b18aff!important;
+  background:#26314c!important;
+  box-shadow:0 0 0 2px #a879ff55,0 9px 22px #050b1680!important;
+}
+.package-art{
+  background:radial-gradient(circle at 50% 35%,#344766 0%,#1b2940 65%,#111c2e 100%)!important;
+}
+.package-card .package-price{
+  color:#d8c0ff!important;
+}
+.package-meta{
+  background:#18263c!important;
+}
+.package-card .package-hint{
+  border-color:#64748d!important;
+  background:#273750!important;
+  color:#e5edfa!important;
+}
+.package-card.selected .package-hint{
+  background:#8758cf!important;
+  border-color:#a879ff!important;
+  color:#fff!important;
+}
+#gameDetailSection #orderForm #submitBtn{
+  background:linear-gradient(100deg,#7546c8,#a16ce8)!important;
+  box-shadow:0 8px 20px #7546c855!important;
+}
+@media(max-width:380px){
+  #packageCards{gap:9px!important}
+  .package-art{height:165px!important}
+  .package-card .package-price{font-size:15px!important}
+  #gameDetailSection{padding:16px 12px!important}
+}
+
 </style>
 </head>
 <body>
@@ -48,39 +691,130 @@ footer{text-align:center;padding:25px;color:#918da9;font-size:12px}
 <div class="pill">Myanmar 🇲🇲</div>
 </nav>
 </header>
+<div id="homePage" class="app-page">
 <section class="hero">
-<div class="pill">FAST • EASY • CONVENIENT</div>
-<h1>GAME TOP-UP CENTER</h1>
-<p>ဂိမ်းငွေဖြည့်ရန် အလွယ်ကူဆုံးနေရာ<br>Choose your game and top up easily.</p>
+<div class="hero-inner">
+<div class="hero-copy">
+<div class="hero-kicker"><span></span> MYANMAR GAME TOP-UP STORE</div>
+<h1>TOP UP YOUR<br><strong>GAME WORLD.</strong></h1>
+<p>သင်နှစ်သက်တဲ့ ဂိမ်းတွေအတွက် ငွေဖြည့်မှုကို လွယ်ကူမြန်ဆန်စွာ ပြုလုပ်လိုက်ပါ။</p>
+<button type="button" class="hero-cta" id="heroExploreGames">Explore Games <span>→</span></button>
+<div class="hero-trust">
+<span>✓ Easy Top-up</span>
+<span>✓ Secure Wallet</span>
+<span>✓ Customer Support</span>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<div class="hero-orbit orbit-one"></div>
+<div class="hero-orbit orbit-two"></div>
+<div class="hero-controller">🎮</div>
+<div class="hero-art-label">LEVEL UP<br><b>YOUR GAME</b></div>
+</div>
+</div>
 </section>
+<section class="home-featured wrap">
+<div class="featured-heading">
+<div><span class="featured-kicker">CHOOSE YOUR GAME</span>
+<h2 class="section-title">Popular Games</h2>
+<p class="featured-sub">လူကြိုက်များတဲ့ ဂိမ်းများကို ရွေးချယ်လိုက်ပါ</p></div>
+</div>
+<div class="games" id="homeGames"></div>
+<button type="button" id="viewAllGames">ဂိမ်းအားလုံး ကြည့်ရန် / View All Games →</button>
+</section>
+</div>
 <main class="wrap">
+<section class="card" id="accountSection">
+<h2 class="section-title">Customer Account / အကောင့်</h2>
+<p class="note">Order တင်ရန် Account ဖွင့်ပါ သို့မဟုတ် Login ဝင်ပါ။ မိမိအော်ဒါမှတ်တမ်းကိုလည်း ပြန်ကြည့်နိုင်ပါသည်။</p>
+<div id="accountGuest">
+<button type="button" id="showLogin">Login ဝင်ရန်</button>
+<button type="button" id="showRegister">Account ဖွင့်ရန်</button>
+<form id="loginForm" style="display:none">
+<label>Email</label><input name="email" type="email" required>
+<label>Password</label><input name="password" type="password" required>
+<button type="submit">LOGIN</button></form>
+<form id="registerForm" style="display:none">
+<label>Username</label><input name="username" minlength="3" maxlength="30" required>
+<label>Email</label><input name="email" type="email" required>
+<label>Password (အနည်းဆုံး ၈ လုံး)</label><input name="password" type="password" minlength="8" maxlength="72" required>
+<button type="submit">CREATE ACCOUNT</button></form>
+</div>
+<div id="accountMember" style="display:none">
+<div class="profile-panel">
+<div class="profile-avatar">👤</div>
+<div><small>CUSTOMER PROFILE</small><p id="accountWelcome"></p><span class="profile-active">● Active Account</span></div>
+</div>
+<div class="account-stats" id="accountStats">
+<div><strong id="totalOrders">0</strong><small>Total Orders</small></div>
+<div><strong id="completedOrders">0</strong><small>Completed</small></div>
+</div>
+<button type="button" id="logoutBtn" class="logout-button" style="margin:12px 0">Logout / ထွက်ရန်</button>
+
+<div id="walletSection" style="margin:20px 0;padding:16px;border:1px solid #c8def5;border-radius:14px;background:#f3f8ff">
+<h3>💰 My Wallet / ငွေစာရင်း</h3>
+<div style="padding:14px;background:#e1efff;border-radius:10px;margin-bottom:14px">
+<small>Available Balance / လက်ကျန်ငွေ</small>
+<h2 id="walletBalance" style="margin:6px 0;color:#1263b5">0 MMK</h2>
+<button type="button" id="refreshWallet">↻ Refresh Balance</button>
+</div>
+<h4>Wallet Deposit / ငွေဖြည့်ရန်</h4>
+<p class="note">အနည်းဆုံး 5,000 MMK၊ အများဆုံး 1,000,000 MMK ဖြည့်နိုင်ပါသည်။ Admin အတည်ပြုပြီးမှ Balance ဝင်ပါမည်။</p>
+<form id="walletDepositForm" enctype="multipart/form-data">
+<label>ငွေဖြည့်ပမာဏ (MMK)</label>
+<input name="amount" type="number" min="5000" max="1000000" step="1" required placeholder="ဥပမာ - 10000">
+<label>Payment Method</label>
+<select name="payment" required>
+<option value="">ငွေပေးချေမှု ရွေးပါ</option>
+<option value="KBZPay">KBZPay</option>
+<option value="WavePay">WavePay</option>
+</select>
+<label>ငွေလွှဲ Screenshot</label>
+<input name="proof" type="file" accept="image/jpeg,image/png,image/webp" required>
+<button type="submit">SUBMIT DEPOSIT / ငွေဖြည့်တင်မည်</button>
+</form>
+<div id="walletMessage" role="status" style="margin-top:10px"></div>
+<h4>Deposit History / ငွေဖြည့်မှတ်တမ်း</h4>
+<div id="walletDeposits" class="note">Loading...</div>
+<h4>Wallet Transactions / ငွေဝင်ငွေထွက်မှတ်တမ်း</h4>
+<div id="walletTransactions" class="note">Loading...</div>
+</div>
+<div class="orders-heading"><h3>My Orders / အော်ဒါမှတ်တမ်း</h3><button type="button" id="refreshOrders">↻ Refresh</button></div>
+<div id="orderNotification" role="status" aria-live="polite" style="display:none"></div>
+<div id="myOrders" class="note"></div>
+</div>
+<div id="accountMessage" style="display:none;padding:12px;border-radius:9px;margin-top:12px"></div>
+</section>
+<section id="gameCatalogSection">
 <h2 class="section-title">ဂိမ်းရွေးချယ်ပါ <span class="sub">/ Select Your Game</span></h2>
 <div class="games" id="games"><p>ဂိမ်းများ ရယူနေသည်... Loading games...</p></div>
+</section>
 
-<section class="card">
-<h2 class="section-title">အော်ဒါတင်ရန် <span class="sub">/ Place Your Order</span></h2>
+<section class="card" id="gameDetailSection" style="display:none">
+<button type="button" id="backToGames" class="logout-button">← ဂိမ်းများသို့ ပြန်သွားမည်</button>
+<h2 class="section-title" id="gameDetailTitle">Game Top Up</h2>
+<h2 class="section-title" style="display:none">အော်ဒါတင်ရန် <span class="sub">/ Place Your Order</span></h2>
 <form id="orderForm">
-<label>Game / ဂိမ်း</label>
-<select id="gameSelect" required><option value="">ဂိမ်းရွေးပါ / Select game</option></select>
+<label style="display:none">Game / ဂိမ်း</label>
+<select id="gameSelect" required style="display:none"><option value="">ဂိမ်းရွေးပါ / Select game</option></select>
 
 <label>Package / ငွေဖြည့်ပမာဏ</label>
 <select id="packageSelect" name="packageId" required><option value="">Package ရွေးပါ</option></select>
+<div id="packageCards" aria-label="Choose a package"></div>
 
 <label>Player ID / ကစားသမား ID</label>
 <input name="playerId" placeholder="Enter your Player ID" required>
-
-<label>Phone Number / ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
-<input name="contact" type="tel" placeholder="09xxxxxxxxx" required>
-
-<label>Payment Method / ငွေပေးချေမှု</label>
-<div class="payment">
-<label><input type="radio" name="payment" value="KBZPay" required> KBZPay</label>
-<label><input type="radio" name="payment" value="WavePay" required> WavePay</label>
+<div id="serverIdField" style="display:none">
+<label>Server ID / ဆာဗာ ID</label>
+<input id="serverIdInput" name="serverId" placeholder="ဥပမာ - 1234">
 </div>
 
-<label>Payment Screenshot / ငွေလွှဲ Screenshot</label>
-<input name="proof" type="file" accept="image/jpeg,image/png,image/webp" required>
-<p class="note">JPG, PNG, WEBP — Maximum 5MB. ငွေလွှဲအထောက်အထား ပုံတင်ပေးပါ။</p>
+
+
+<div class="note" style="margin:14px 0;padding:12px;border-radius:9px;background:#eaf5ff;color:#17466b">
+<strong>💰 Wallet Payment / Wallet ဖြင့် ငွေပေးချေခြင်း</strong>
+<p>Order တင်သည့်အခါ Package ဈေးနှုန်းကို သင့် Wallet Balance ထဲမှ အလိုအလျောက် ဖြတ်ပါမည်။ Wallet လက်ကျန်ငွေ မလုံလောက်ပါက အရင်ငွေဖြည့်ပေးပါ။</p>
+</div>
 
 <button id="submitBtn" type="submit">အော်ဒါတင်မည် / SUBMIT ORDER</button>
 <div id="message"></div>
@@ -92,6 +826,15 @@ footer{text-align:center;padding:25px;color:#918da9;font-size:12px}
 <p class="note">အော်ဒါတင်ပြီးနောက် Admin မှ စစ်ဆေးအတည်ပြုပေးပါမည်။ ငွေလွှဲအထောက်အထား မှန်ကန်စွာတင်ပေးပါ။</p>
 </section>
 </main>
+
+<nav id="bottomNavigation" aria-label="Main navigation">
+<button type="button" data-page="home" class="active">⌂<small>Home</small></button>
+<button type="button" data-page="games">🎮<small>Games</small></button>
+<button type="button" data-page="wallet">💰<small>Wallet</small></button>
+<button type="button" data-page="orders">📋<small>Orders</small></button>
+<button type="button" data-page="account">👤<small>Account</small></button>
+</nav>
+
 <footer>© 2026 MM GAME STORE. All Rights Reserved.</footer>
 
 <script>
@@ -112,38 +855,462 @@ try{
 const r=await fetch('/api/catalog');
 if(!r.ok)throw Error('Catalog မရရှိပါ');
 const data=await r.json();games=data.games;packages=data.packages;
-$('games').innerHTML=games.map((g,i)=>`<div class="game" data-id="${g.id}"><img src="${icons[i]||''}" alt="" onerror="this.style.display='none'"><b>${esc(g.name)}</b></div>`).join('');
+$('games').innerHTML=games.map(g=>`<div class="game" data-id="${g.id}">${icons[Number(g.id)-1]?`<img src="${icons[Number(g.id)-1]}" alt="" onerror="this.style.display='none'">`:'<span class="game-fallback-icon">🎮</span>'}<b>${esc(g.name)}</b></div>`).join('');
 $('gameSelect').innerHTML='<option value="">ဂိမ်းရွေးပါ / Select game</option>'+games.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('');
-$('games').querySelectorAll('.game').forEach(el=>el.onclick=()=>chooseGame(el.dataset.id));
+$('games').querySelectorAll('.game').forEach(el=>el.onclick=()=>openGameDetail(el.dataset.id));
+$('homeGames').innerHTML=games.slice(0,4).map(g=>`<div class="game" data-id="${g.id}">${icons[Number(g.id)-1]?`<img src="${icons[Number(g.id)-1]}" alt="" onerror="this.style.display='none'">`:'<span class="game-fallback-icon">🎮</span>'}<b>${esc(g.name)}</b></div>`).join('');
+$('homeGames').querySelectorAll('.game').forEach(el=>el.onclick=()=>{showAppPage('games');openGameDetail(el.dataset.id)});
+
 $('gameSelect').onchange=()=>chooseGame($('gameSelect').value);
 }catch(e){$('games').innerHTML='<p>ဂိမ်းများ ရယူမရပါ။ Server ကို စစ်ဆေးပါ။</p>'}
 }
 function chooseGame(id){
-selectedGame=String(id);$('gameSelect').value=selectedGame;
+selectedGame=String(id);
+$('gameSelect').value=selectedGame;
 $('games').querySelectorAll('.game').forEach(el=>el.classList.toggle('active',el.dataset.id===selectedGame));
 const list=packages.filter(p=>String(p.game_id)===selectedGame);
 $('packageSelect').innerHTML='<option value="">Package ရွေးပါ / Select package</option>'+list.map(p=>`<option value="${p.id}">${esc(p.title)} — ${Number(p.price).toLocaleString()} MMK</option>`).join('');
+const currencyImages = {
+ '1':'mlbb-diamond.png',
+ '2':'pubg-uc.webp',
+ '4':'hok-token.png',
+ '5':'delta-coins.png',
+ '6':'genshin-crystal.webp',
+ '7':'freefire-diamond.png'
+};
+const packageVisuals = {
+ '1':{icon:'💎',label:'DIAMONDS'},
+ '2':{icon:'🪙',label:'UNKNOWN CASH / UC'},
+ '3':{icon:'♟️',label:'WEEKLY PASS'},
+ '4':{icon:'🪙',label:'TOKENS'},
+ '5':{icon:'🎖️',label:'DELTA COINS'},
+ '6':{icon:'✨',label:'GENESIS CRYSTALS'},
+ '7':{icon:'💎',label:'FREE FIRE DIAMONDS'}
+};
+const packageVisual=packageVisuals[selectedGame]||{icon:'🎮',label:'GAME PACKAGE'};
+$('packageCards').innerHTML=list.map(p=>{
+ const qty=Number((p.title.match(/[\d,]+/)||[])[0]?.replace(/,/g,''))||0;
+ const imageSize=qty>=1000?132:qty>=500?112:90;
+ const image=currencyImages[selectedGame]
+  ? '<img class="currency-image" src="/images/currency/'+currencyImages[selectedGame]+'" alt="'+packageVisual.label+'" style="width:'+imageSize+'px;height:'+imageSize+'px" loading="lazy">'
+  : '<div class="package-art-placeholder">'+packageVisual.icon+'<small>'+packageVisual.label+'</small></div>';
+ return '<button type="button" class="package-card" data-package-id="'+p.id+'">'+
+  '<div class="package-art">'+image+
+   '<div class="package-overlay"><div class="package-name">'+esc(p.title)+'</div>'+
+   '<div class="package-price">'+Number(p.price).toLocaleString()+' MMK</div></div></div>'+
+  '<div class="package-meta"><small class="package-currency">'+packageVisual.label+'</small>'+
+  '<span class="package-hint">ရွေးချယ်ရန် / Select</span></div></button>';
+}).join('');
+$('packageCards').querySelectorAll('.package-card').forEach(card=>{
+ card.addEventListener('click',()=>{
+  $('packageSelect').value=card.dataset.packageId;
+  $('packageCards').querySelectorAll('.package-card').forEach(c=>{
+   const active=c===card;
+   c.classList.toggle('selected',active);
+   c.querySelector('.package-hint').textContent=active?'✓ ရွေးချယ်ပြီး':'ရွေးချယ်ရန် / Select';
+  });
+ });
+});
+
 }
+function openGameDetail(id,fromPop=false){
+const game=games.find(g=>String(g.id)===String(id));
+if(!game)return;
+const currentPage=document.querySelector('#bottomNavigation button.active')?.dataset.page||'games';
+if(!fromPop)history.pushState({mmCustomer:true,page:currentPage,detailGameId:String(id)},'','#game-'+id);
+chooseGame(id);
+const isMLBB=/mobile legends|mlbb|magic chess|mcgg/i.test(game.name);
+$('gameCatalogSection').style.display='none';
+$('gameDetailSection').style.display='block';
+$('gameDetailTitle').textContent=game.name+' — Top Up';
+$('serverIdField').style.display=isMLBB?'block':'none';
+$('serverIdInput').required=isMLBB;
+$('serverIdInput').value='';
+$('gameDetailSection').scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('backToGames').onclick=()=>{
+if(history.state?.mmCustomer)history.back();
+else{$('gameDetailSection').style.display='none';showAppPage('games');}
+};
+
 $('orderForm').onsubmit=async e=>{
 e.preventDefault();
-const btn=$('submitBtn'),msg=$('message'),fd=new FormData(e.target);
-fd.append('gameId',selectedGame);
-if(!selectedGame){msg.style.display='block';msg.textContent='ဂိမ်းရွေးချယ်ပေးပါ။';return}
-btn.disabled=true;btn.textContent='တင်နေသည်... / SUBMITTING';
-msg.style.display='none';
+
 try{
-const r=await fetch('/api/orders',{method:'POST',body:fd});
-const d=await r.json();
-if(!r.ok)throw Error(d.error||'အော်ဒါတင်မရပါ');
-msg.style.display='block';msg.style.background='#173d32';msg.style.color='#aaffd8';
-msg.textContent='အော်ဒါတင်ပြီးပါပြီ။ Order Number: #'+d.orderId+' — Thank you!';
-e.target.reset();selectedGame='';$('games').querySelectorAll('.game').forEach(el=>el.classList.remove('active'));
-$('packageSelect').innerHTML='<option value="">Package ရွေးပါ</option>';
+const auth=await fetch('/api/customer/me');
+const user=await auth.json();
+
+if(!user.loggedIn){
+ showAppPage('account');
+ $('accountGuest').style.display='block';
+ accountMode('register');
+ accountMsg('Order တင်ရန် Account ဖွင့်ပါ။ Account ရှိပြီးသားဆိုရင် Login ဝင်နိုင်ပါတယ်။');
+ return;
+}
 }catch(err){
-msg.style.display='block';msg.style.background='#4b202e';msg.style.color='#ffd5df';msg.textContent=err.message;
-}finally{btn.disabled=false;btn.textContent='အော်ဒါတင်မည် / SUBMIT ORDER'}
+alert('Login အခြေအနေ စစ်မရပါ။ Server ကို စစ်ဆေးပါ။');
+return;
+}
+
+const btn=$('submitBtn'),msg=$('message');
+const form=e.target;
+const data={
+ gameId:selectedGame,
+ packageId:form.packageId.value,
+ playerId:form.playerId.value,
+ serverId:form.serverId.value,
 };
+
+if(!selectedGame){
+msg.textContent='ဂိမ်းရွေးချယ်ပေးပါ။';
+return;
+}
+
+btn.disabled=true;
+btn.textContent='တင်နေသည်... / SUBMITTING';
+msg.style.display='none';
+
+try{
+await ensureCsrfToken();
+
+const r=await fetch('/api/orders',{
+ method:'POST',
+ headers:{
+  'Content-Type':'application/json',
+  'x-csrf-token':csrfToken
+ },
+ body:JSON.stringify(data)
+});
+
+const d=await r.json();
+if(!r.ok){
+ if(d.code==='WALLET_INSUFFICIENT'){
+  msg.style.display='block';
+  showAppPage('wallet');
+  await loadWallet();
+  showGlobalToast('ငွေမလောက်ပါ။ ကျေးဇူးပြု၍ ငွေဖြည့်ပြီး ထပ်ကြိုးစားပါ။');
+  return;
+ }
+ throw Error(d.error||'အော်ဒါတင်မရပါ');
+}
+
+msg.style.display='block';
+msg.style.background='#173d32';
+msg.style.color='#aaffd8';
+msg.textContent='အော်ဒါတင်ခြင်း အောင်မြင်ပါသည်။';
+
+form.reset();
+$('gameSelect').value=selectedGame;
+$('serverIdInput').value='';
+$('packageSelect').selectedIndex=0;
+$('packageCards').querySelectorAll('.package-card').forEach(c=>{c.classList.remove('selected');c.querySelector('.package-hint').textContent='ရွေးချယ်ရန် / Select'});
+
+await loadWallet();
+await loadMyOrders();
+
+}catch(err){
+msg.style.display='block';
+msg.style.background='#4b202e';
+msg.style.color='#ffd5df';
+msg.textContent=err.message;
+}finally{
+btn.disabled=false;
+btn.textContent='အော်ဒါတင်မည် / SUBMIT ORDER';
+}
+};
+
+let csrfToken='';
+async function ensureCsrfToken(){
+  if(!csrfToken){
+    const r=await fetch('/api/csrf-token');
+    const d=await r.json();
+    if(!r.ok)throw Error(d.error||'Security token မရပါ');
+    csrfToken=d.csrfToken;
+  }
+  return csrfToken;
+}
+const accountMsg=(t,ok=false)=>{let e=$('accountMessage');e.style.display='block';e.style.background=ok?'#173d32':'#4b202e';e.style.color=ok?'#aaffd8':'#ffd5df';e.textContent=t};
+
+let globalToastTimer=null;
+function showGlobalToast(message){
+ const toast=$('globalToast');
+ if(toast.classList.contains('show')) return;
+ toast.textContent=message;
+ toast.classList.add('show');
+ globalToastTimer=setTimeout(()=>{
+  toast.classList.remove('show');
+  globalToastTimer=null;
+ },3500);
+}
+
+async function accountPost(url,data){
+  await ensureCsrfToken();
+  let r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','x-csrf-token':csrfToken},body:JSON.stringify(data)});
+  let d=await r.json();
+  if(!r.ok)throw Error(d.error||'လုပ်ဆောင်မရပါ');
+  if(d.csrfToken)csrfToken=d.csrfToken;
+  return d;
+}
+function accountMode(m){$('loginForm').style.display=m==='login'?'block':'none';$('registerForm').style.display=m==='register'?'block':'none';$('accountMessage').style.display='none'}
+$('showLogin').onclick=()=>accountMode('login');
+$('showRegister').onclick=()=>accountMode('register');
+$('loginForm').onsubmit=async e=>{e.preventDefault();try{await accountPost('/api/customer/login',Object.fromEntries(new FormData(e.target)));e.target.reset();accountMsg('Login အောင်မြင်ပါပြီ။',true);await loadCustomer()}catch(x){accountMsg(x.message)}};
+$('registerForm').onsubmit=async e=>{e.preventDefault();try{await accountPost('/api/customer/register',Object.fromEntries(new FormData(e.target)));e.target.reset();accountMsg('Account ဖွင့်ပြီးပါပြီ။',true);await loadCustomer()}catch(x){accountMsg(x.message)}};
+async function loadCustomer(){
+  try{
+    const r=await fetch('/api/customer/me');
+    const d=await r.json();
+    if(!r.ok)throw Error(d.error||'Account load failed');
+
+    $('accountGuest').style.display=d.loggedIn?'none':'block';
+    $('accountMember').style.display=d.loggedIn?'block':'none';
+
+    if(d.loggedIn){
+      $('accountWelcome').textContent='မင်္ဂလာပါ၊ '+d.customer.username;
+      Promise.allSettled([loadMyOrders(),loadWallet()]);
+    }
+  }catch(e){
+    console.error(e);
+  }
+}
+
+
+
+const recordPages={};
+
+function renderRecordPage(id,items,renderer,emptyText){
+  const el=$(id);
+  const page=recordPages[id];
+  if(!items.length){
+    el.textContent=emptyText;
+    return;
+  }
+  const shown=Math.min(page.shown,items.length);
+  el.innerHTML=items.slice(0,shown).map(renderer).join('')+
+    (shown<items.length?
+      '<button type="button" class="show-more-button">Show More · ထပ်ကြည့်ရန်</button>':'');
+  const btn=el.querySelector('.show-more-button');
+  if(btn)btn.onclick=()=>{
+    page.shown=Math.min(page.shown+5,items.length);
+    renderRecordPage(id,items,renderer,emptyText);
+  };
+}
+
+function resetRecordPage(id,items){
+  recordPages[id]={shown:5,items};
+}
+
+async function loadWallet(){
+  try{
+    const [br,dr,tr]=await Promise.all([
+      fetch('/api/customer/wallet',{cache:'no-store'}),
+      fetch('/api/customer/wallet/deposits',{cache:'no-store'}),
+      fetch('/api/customer/wallet/transactions',{cache:'no-store'})
+    ]);
+    const [b,d,t]=await Promise.all([br.json(),dr.json(),tr.json()]);
+    if(!br.ok||!dr.ok||!tr.ok)
+      throw Error(b.error||d.error||t.error||'Wallet load failed');
+
+    $('walletBalance').textContent=Number(b.balance).toLocaleString()+' MMK';
+
+    const statusColors={
+      Pending:'#d99000',Approved:'#15945b',
+      Completed:'#15945b',Rejected:'#d34b5b'
+    };
+
+    resetRecordPage('walletDeposits',d);
+    renderRecordPage('walletDeposits',d,x=>
+      '<div class="order-card record-reveal"><b>Deposit #'+Number(x.id)+'</b> — '+
+      Number(x.amount).toLocaleString()+' MMK<br>'+
+      esc(x.payment_method)+' · <strong style="color:'+
+      (statusColors[x.status]||'#64748b')+'">'+esc(x.status)+'</strong><br>'+
+      '<small>'+new Date(x.created_at).toLocaleString()+'</small>'+
+      '<br><a href="/api/wallet/deposits/'+Number(x.id)+'/proof" target="_blank" rel="noopener">Screenshot ကြည့်ရန်</a></div>',
+      'ငွေဖြည့်မှတ်တမ်း မရှိသေးပါ။'
+    );
+
+    resetRecordPage('walletTransactions',t);
+    renderRecordPage('walletTransactions',t,x=>
+      '<div class="order-card record-reveal"><b>'+esc(x.transaction_type)+'</b> — '+
+      Number(x.amount).toLocaleString()+' MMK<br>'+
+      esc(x.description||'')+'<br><small>'+
+      new Date(x.created_at).toLocaleString()+'</small></div>',
+      'Transaction မရှိသေးပါ။'
+    );
+  }catch(e){
+    $('walletBalance').textContent='မရရှိနိုင်ပါ';
+    $('walletDeposits').textContent=e.message;
+  }
+}
+
+$('refreshWallet').onclick=loadWallet;
+
+$('walletDepositForm').onsubmit=async e=>{
+  e.preventDefault();
+  const form=e.target;
+  const amount=Number(form.elements.amount.value);
+  if(!Number.isSafeInteger(amount)||amount<5000||amount>1000000){
+    $('walletMessage').textContent='5,000 မှ 1,000,000 MMK အတွင်း ထည့်ပါ။';
+    return;
+  }
+  try{
+    await ensureCsrfToken();
+    const r=await fetch('/api/customer/wallet/deposits',{
+      method:'POST',
+      headers:{'x-csrf-token':csrfToken},
+      body:new FormData(form)
+    });
+    const d=await r.json();
+    if(!r.ok)throw Error(d.error||'Deposit တင်မရပါ။');
+    $('walletMessage').textContent='Deposit #'+d.depositId+' တင်ပြီးပါပြီ။ Admin အတည်ပြုရန် စောင့်ပါ။';
+    form.reset();
+    await loadWallet();
+  }catch(x){
+    $('walletMessage').textContent=x.message;
+  }
+};
+
+let knownOrderStatuses=null;
+
+
+async function loadMyOrders(){
+  const el=$('myOrders');
+  try{
+    const r=await fetch('/api/customer/orders',{cache:'no-store'});
+    const a=await r.json();
+    if(!r.ok)throw Error(a.error||'မရပါ');
+
+    $('totalOrders').textContent=a.length;
+    $('completedOrders').textContent=a.length;
+    $('orderNotification').style.display='none';
+
+    if(!a.length){
+      el.textContent='အော်ဒါမှတ်တမ်း မရှိသေးပါ။';
+      return;
+    }
+
+    resetRecordPage('myOrders',a);
+    renderRecordPage('myOrders',a,o=>
+      '<div class="order-card record-reveal"><div class="order-top"><span class="order-id">Order #'+
+      Number(o.id)+'</span><span class="order-status" style="color:#15945b;background:#e8f7ef">Completed</span></div><b>'+
+      esc(o.game_name)+'</b><br>'+esc(o.package_name)+'<br><span class="order-price">'+
+      Number(o.price).toLocaleString()+' MMK</span><br>Player ID: '+esc(o.player_id)+
+      (o.server_id?'<br>Server ID: '+esc(o.server_id):'')+'<br><small>'+
+      new Date(o.created_at).toLocaleString()+'</small></div>',
+      'အော်ဒါမှတ်တမ်း မရှိသေးပါ။'
+    );
+  }catch(e){
+    el.textContent=e.message;
+  }
+}
+
+$('refreshOrders').onclick=loadMyOrders;
+
+$('logoutBtn').onclick=async()=>{
+  try{
+    await ensureCsrfToken();
+    const r=await fetch('/api/customer/logout',{method:'POST',headers:{'x-csrf-token':csrfToken}});
+    const d=await r.json();
+    if(!r.ok)throw Error(d.error||'Logout မအောင်မြင်ပါ');
+    csrfToken='';
+    $('accountMember').style.display='none';
+    $('accountGuest').style.display='block';
+    $('myOrders').innerHTML='';
+    knownOrderStatuses=null;
+    $('orderNotification').style.display='none';
+    accountMsg('Logout လုပ်ပြီးပါပြီ။',true);
+    await loadCustomer();
+  }catch(e){accountMsg(e.message)}
+};
+
+
+function showAppPage(page,fromPop=false){
+  if(!fromPop){
+    const state={mmCustomer:true,page,detailGameId:null};
+    if(history.state?.mmCustomer)history.pushState(state,'','#'+page);
+    else history.replaceState(state,'','#'+page);
+  }
+  const home=$('homePage');
+  const account=$('accountSection');
+  const catalog=$('gameCatalogSection');
+  const detail=$('gameDetailSection');
+  home.hidden=page!=='home';
+  account.classList.toggle('app-hidden',!['account','wallet','orders'].includes(page));
+  catalog.style.display=page==='games'?'block':'none';
+  if(page!=='games')detail.style.display='none';
+
+  const guest=$('accountGuest');
+  const member=$('accountMember');
+  const loggedIn=member.style.display!=='none';
+
+  // Account sub-sections remain in the same DOM so existing functions keep working.
+  const profile=account.querySelector('.profile-panel');
+  const stats=$('accountStats');
+  const wallet=$('walletSection');
+  const orderHeading=account.querySelector('.orders-heading');
+  const notification=$('orderNotification');
+  const orders=$('myOrders');
+  const logout=$('logoutBtn');
+  const title=account.querySelector('.section-title');
+  const note=account.querySelector(':scope > .note');
+
+  if(page==='wallet'||page==='orders'){
+    if(title)title.classList.add('app-hidden');
+    if(note)note.classList.add('app-hidden');
+    guest.classList.add('app-hidden');
+    if(profile)profile.classList.add('app-hidden');
+    if(stats)stats.classList.add('app-hidden');
+    wallet.classList.toggle('app-hidden',page!=='wallet');
+    if(orderHeading)orderHeading.classList.toggle('app-hidden',page!=='orders');
+    notification.classList.toggle('app-hidden',page!=='orders');
+    orders.classList.toggle('app-hidden',page!=='orders');
+
+    if(!loggedIn){guest.classList.remove('app-hidden');}
+    if(page==='wallet'&&loggedIn)loadWallet();
+    if(page==='orders'&&loggedIn)loadMyOrders();
+  }else{
+    if(title)title.classList.remove('app-hidden');
+    if(note)note.classList.remove('app-hidden');
+    guest.classList.remove('app-hidden');
+    if(profile)profile.classList.remove('app-hidden');
+    if(stats)stats.classList.remove('app-hidden');
+    wallet.classList.remove('app-hidden');
+    if(orderHeading)orderHeading.classList.remove('app-hidden');
+    notification.classList.remove('app-hidden');
+    orders.classList.remove('app-hidden');
+    logout.classList.remove('app-hidden');
+  }
+  document.querySelectorAll('#bottomNavigation button').forEach(b=>
+    b.classList.toggle('active',b.dataset.page===page)
+  );
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('#bottomNavigation button').forEach(b=>
+  b.addEventListener('click',()=>showAppPage(b.dataset.page))
+);
+window.addEventListener('popstate',e=>{
+  const state=e.state;
+  if(!state?.mmCustomer){
+    $('gameDetailSection').style.display='none';
+    showAppPage('home',true);
+    return;
+  }
+  showAppPage(state.page||'home',true);
+  if(state.detailGameId)openGameDetail(state.detailGameId,true);
+  else $('gameDetailSection').style.display='none';
+});
+$('viewAllGames').onclick=()=>showAppPage('games');
+$('heroExploreGames').onclick=()=>showAppPage('games');
+
+history.replaceState({mmCustomer:true,page:'home',detailGameId:null},'','#home');
+showAppPage('home',true);
+ensureCsrfToken()
+  .then(()=>loadCustomer())
+  .catch(e=>{
+    console.error('CSRF preload failed:',e);
+    loadCustomer();
+  });
 loadCatalog();
 </script>
+<div id="globalToast" role="alert" aria-live="polite"></div>
 </body>
-</html>
