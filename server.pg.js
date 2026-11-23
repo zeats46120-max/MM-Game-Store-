@@ -17,6 +17,7 @@ if(!process.env.DATABASE_URL||!process.env.SESSION_SECRET){
 }
 
 const app=express();
+app.set("trust proxy",1);
 const pool=new Pool({
   connectionString:process.env.DATABASE_URL,
   max:10,
